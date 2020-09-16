@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.medicare_pharmacyapp" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".Prescri_Delivery" />
+        <activity android:name=".Delivery" />
+        <activity android:name=".Confirm_Order" />
+        <activity android:name=".Checkout" />
+        <activity android:name=".My_Cart" />
+        <activity android:name=".Display_Item" />
+        <activity android:name=".Search_Item" />
+        <activity android:name=".Login_signupActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".newPrescriptions"
+            android:label="New Prescriptions" />
+        <activity
+            android:name=".ViewPrescriptions"
+            android:label="New Prescriptions" />
+        <activity
+            android:name=".NewOrederitems"
+            android:label="Order Items" />
+        <activity
+            android:name=".admin_newOrders"
+            android:label="New Orders" />
+        <activity
+            android:name=".editItems"
+            android:label="Manage Items" />
+        <activity android:name=".ManageProducts" />
+        <activity android:name=".AddCategory" />
+        <activity android:name=".AdminPanel" />
+        <activity android:name=".AddItem" />
+    </application>
+
+</manifest>

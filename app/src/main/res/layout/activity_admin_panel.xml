@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:drawable/screen_background_light_transparent"
+    tools:context=".AdminPanel">
+
+    <TextView
+        android:id="@+id/adminPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:gravity="center_horizontal"
+        android:text="@string/admin"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/addItems_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/adminPanel"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_design"
+        android:text="@string/addItems"
+        android:textAllCaps="false"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="20sp" />
+
+
+    <Button
+        android:id="@+id/MangeItems_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/addItems_btn"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_design"
+        android:text="@string/manageItems"
+        android:textAllCaps="false"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/newOrders_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/MangeItems_btn"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_design"
+        android:text="@string/newOrders"
+        android:textAllCaps="false"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="20sp" />
+
+
+    <Button
+        android:id="@+id/btn_prescription"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/newOrders_btn"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/input_design"
+        android:text="@string/Pres"
+        android:textAllCaps="false"
+        android:textColor="@android:color/secondary_text_light"
+        android:textSize="20sp" />
+
+
+    <Button
+        android:id="@+id/admin_logout_btn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="35dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/lgOut"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+</RelativeLayout>

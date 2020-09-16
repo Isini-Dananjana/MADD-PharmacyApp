@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "911942904120",
+    "firebase_url": "https://pharmcyapp-e1596.firebaseio.com",
+    "project_id": "pharmcyapp-e1596",
+    "storage_bucket": "pharmcyapp-e1596.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911942904120:android:21e5b68831e923b449f9cd",
+        "android_client_info": {
+          "package_name": "com.example.medicare_pharmacyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911942904120-6vr3sliahp9g99tie1kitbuq9i3bism3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.medicare_pharmacyapp",
+            "certificate_hash": "1e9f0ba09c156d77ebe15f6f51ef8803b5581493"
+          }
+        },
+        {
+          "client_id": "911942904120-dvkkck5g433uuh66vs5lphvnq3j626qr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK9McyY8MrXp6-0ki9ONf6NeJT18L1lpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911942904120-dvkkck5g433uuh66vs5lphvnq3j626qr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911942904120:android:1576e0caa70dec7749f9cd",
+        "android_client_info": {
+          "package_name": "com.example.pharmcyapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911942904120-hlp6kt29m05h0uamg9fj3bt4k78nno12.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pharmcyapp",
+            "certificate_hash": "1e9f0ba09c156d77ebe15f6f51ef8803b5581493"
+          }
+        },
+        {
+          "client_id": "911942904120-dvkkck5g433uuh66vs5lphvnq3j626qr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCK9McyY8MrXp6-0ki9ONf6NeJT18L1lpE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911942904120-dvkkck5g433uuh66vs5lphvnq3j626qr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
