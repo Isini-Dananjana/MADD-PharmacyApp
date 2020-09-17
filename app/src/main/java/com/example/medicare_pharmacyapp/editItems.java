@@ -32,8 +32,6 @@ public class editItems extends AppCompatActivity {
     private String productID = "";
     private DatabaseReference productsRef;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,26 +40,19 @@ public class editItems extends AppCompatActivity {
         productID = getIntent().getStringExtra("pid");
         productsRef = FirebaseDatabase.getInstance().getReference().child("products").child(productID);
 
+        applyChangesBtn = findViewById(R.id.apply_changes_btn);
+        name = findViewById(R.id.product_name_maintain);
+        price = findViewById(R.id.product_price_maintain);
+        description = findViewById(R.id.product_description_maintain);
+        imageView = findViewById(R.id.product_image_maintain);
+            deleteBtn = findViewById(R.id.delete_product_btn);
 
-
-        applyChangesBtn = findViewById(R.id.btn_apply_changes);
-        name = findViewById(R.id.product_name_edit);
-        price = findViewById(R.id.product_price_edit);
-        description = findViewById(R.id.product_description_edit);
-        imageView = findViewById(R.id.product_image_edit);
-        deleteBtn = findViewById(R.id.btn_delete_product);
-
-
-
-        displayScpecificProductInfo();
-
+        displaySpecificProductInfo();
 
         applyChangesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View v) {
                 applyChanges();
-
             }
         });
 
@@ -85,92 +76,88 @@ public class editItems extends AppCompatActivity {
 
                 Toast.makeText(editItems.this, "Successfully delete", Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(editItems.this, AddCategory.class);
+                Intent intent = new Intent(editItems.this, AdminPanel.class);
                 startActivity(intent);
                 finish();
 
 
             }
         });
-
-
     }
 
     private void applyChanges() {
-
         String pName = name.getText().toString();
         String pPrice = price.getText().toString();
-        String pDescription = description.getText().toString();
+        String pDes= description.getText().toString();
 
-
-        if(pName.equals("")){
-
-            Toast.makeText(this, "Enter product name", Toast.LENGTH_SHORT).show();
-
-        }else if(pPrice.equals("")){
-
-            Toast.makeText(this, "Enter product price", Toast.LENGTH_SHORT).show();
-
-        }else if(pDescription.equals("")){
-
-            Toast.makeText(this, "Enter product description", Toast.LENGTH_SHORT).show();
-
-        }else{
-
+        if(pName.equals(""))
+        {
+            Toast.makeText(this,"Write product name",Toast.LENGTH_SHORT).show();
+        }
+        else if(pPrice.equals(""))
+        {
+            Toast.makeText(this,"Write product price",Toast.LENGTH_SHORT).show();
+        }
+        else if(pDes.equals(""))
+        {
+            Toast.makeText(this,"Write product Descrition",Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
             HashMap<String, Object> productMap = new HashMap<>();
             productMap.put("pid", productID);
-            productMap.put("description", pDescription);
+            productMap.put("description", pDes);
             productMap.put("price", pPrice);
-            productMap.put("name", pName);
+            productMap.put("pname", pName);
 
+            productsRef.updateChildren(productMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful())
+                    {
+                        Toast.makeText(editItems.this,"Changes applied succesfully",Toast.LENGTH_SHORT).show();
 
-            productsRef.updateChildren(productMap)
-                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                        Intent intent = new Intent(editItems.this, AdminPanel.class);
+                       startActivity(intent);
+                       finish();
+                    }
 
-                            if(task.isSuccessful()){
+                }
+            });
 
-                                Toast.makeText(editItems.this, "Changes applied successfully", Toast.LENGTH_SHORT).show();
-
-                                Intent intent = new Intent(editItems.this, AddCategory.class);
-                                startActivity(intent);
-                                finish();
-                            }
-
-                        }
-                    });
         }
 
 
     }
 
-    private void displayScpecificProductInfo() {
-
+    private void displaySpecificProductInfo() {
         productsRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                if(dataSnapshot.exists()){
-
-                    String pName = dataSnapshot.child("name").getValue().toString();
-                    String pPrice = dataSnapshot.child("price").getValue().toString();
-                    String pDescription = dataSnapshot.child("description").getValue().toString();
-                    String pImage = dataSnapshot.child("image").getValue().toString();
-
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists())
+                {
+                    String pName = snapshot.child("pname").getValue().toString();
+                    String pPrice = snapshot.child("price").getValue().toString();
+                    String pDes = snapshot.child("description").getValue().toString();
+                    String pImage = snapshot.child("image").getValue().toString();
 
                     name.setText(pName);
                     price.setText(pPrice);
-                    description.setText(pDescription);
+                    description.setText(pDes);
                     Picasso.get().load(pImage).into(imageView);
-                }
 
+
+
+                }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
     }
+
+
 }
+

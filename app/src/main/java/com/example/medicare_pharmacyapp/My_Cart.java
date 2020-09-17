@@ -27,7 +27,7 @@ public class My_Cart extends AppCompatActivity {
         editbtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(My_Cart.this, com.example.madd_pharmacyapp.Display_Item.class);
+                Intent i = new Intent(My_Cart.this, com.example.medicare_pharmacyapp.Display_Item.class);
                 startActivity(i);
             }
         });

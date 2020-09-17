@@ -131,7 +131,7 @@ public class Display_Item extends AppCompatActivity {
                 if(snapshot.exists()){
                     Products products = snapshot.getValue(Products.class);
 
-                    productName.setText(products.getName());
+                    productName.setText(products.getPName());
                     productDescription.setText(products.getDescription());
                     productPrice.setText(products.getPrice());
                     Picasso.get().load(products.getImage()).into(productImage);

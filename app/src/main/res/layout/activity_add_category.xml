@@ -34,15 +34,15 @@
 
                 <ImageView
                     android:id="@+id/medicine"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
+                    android:layout_width="155dp"
+                    android:layout_height="155dp"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/med" />
 
                 <ImageView
                     android:id="@+id/mombaby"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
+                    android:layout_width="155dp"
+                    android:layout_height="155dp"
                     android:src="@drawable/momnbab" />
 
 
@@ -62,14 +62,14 @@
 
                 <ImageView
                     android:id="@+id/weightloss"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
+                    android:layout_width="155dp"
+                    android:layout_height="155dp"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/wightloss" />
 
                 <ImageView
                     android:id="@+id/vitamin"
-                    android:layout_width="160dp"
+                    android:layout_width="155dp"
                     android:layout_height="160dp"
                     android:src="@drawable/vit" />
 
@@ -89,15 +89,15 @@
 
                 <ImageView
                     android:id="@+id/personal"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
+                    android:layout_width="155dp"
+                    android:layout_height="155dp"
                     android:layout_marginRight="10dp"
                     android:src="@drawable/personalcare" />
 
                 <ImageView
                     android:id="@+id/health"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
+                    android:layout_width="155dp"
+                    android:layout_height="155dp"
                     android:src="@drawable/health" />
 
         </LinearLayout>

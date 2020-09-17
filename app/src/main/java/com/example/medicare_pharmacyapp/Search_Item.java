@@ -24,7 +24,7 @@ public class Search_Item extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(Search_Item.this, com.example.madd_pharmacyapp.Display_Item.class);
+                Intent i = new Intent(Search_Item.this, com.example.medicare_pharmacyapp.Display_Item.class);
                 startActivity(i);
             }
         });

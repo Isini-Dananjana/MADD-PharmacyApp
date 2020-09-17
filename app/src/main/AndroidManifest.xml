@@ -43,7 +43,6 @@
         <activity
             android:name=".editItems"
             android:label="Manage Items" />
-        <activity android:name=".ManageProducts" />
         <activity android:name=".AddCategory" />
         <activity android:name=".AdminPanel" />
         <activity android:name=".AddItem" />

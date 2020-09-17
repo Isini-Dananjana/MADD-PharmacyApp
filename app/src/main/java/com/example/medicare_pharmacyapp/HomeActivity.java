@@ -37,16 +37,26 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
+    private String type = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if(bundle != null) {
+            type = getIntent().getExtras().get("Admin").toString();
+        }
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("products");
 
 
         Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
+
+
 
         FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +79,7 @@ public class HomeActivity extends AppCompatActivity {
 //        NavigationUI.setupWithNavController(navigationView, navController);
 
 
+
     recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
     layoutManager = new LinearLayoutManager(this);
@@ -89,17 +100,28 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     protected void onBindViewHolder(@NonNull ProductViewHolder holder, int i, @NonNull final Products model) {
 
-                        holder.txtProductName.setText(model.getName());
+                        holder.txtProductName.setText(model.getPName());
                         holder.txtProductDescription.setText(model.getDescription());
                         holder.txtProductPrice.setText("Price = "+model.getPrice() +"LKR");
                         Picasso.get().load(model.getImage()).into(holder.imageView);
 
+
                         holder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Intent intent = new Intent(HomeActivity.this, com.example.medicare_pharmacyapp.Display_Item.class);
-                                intent.putExtra("pid",model.getPid());
-                                startActivity(intent);
+                                if(type.equals("Admin"))
+                                {
+                                    Intent intent = new Intent(HomeActivity.this, com.example.medicare_pharmacyapp.editItems.class);
+                                    intent.putExtra("pid",model.getPid());
+                                    startActivity(intent);
+                                }
+                                else
+                                {
+                                    Intent intent = new Intent(HomeActivity.this, com.example.medicare_pharmacyapp.Display_Item.class);
+                                    intent.putExtra("pid",model.getPid());
+                                    startActivity(intent);
+                                }
+
                             }
                         });
 

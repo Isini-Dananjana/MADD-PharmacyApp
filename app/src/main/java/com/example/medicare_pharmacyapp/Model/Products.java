@@ -2,15 +2,15 @@ package com.example.medicare_pharmacyapp.Model;
 
 public class Products {
 
-    private String name, description, price, image, category, pid, date, time, productState;
+    private String pname, description, price, image, category, pid, date, time, productState;
 
 
     public Products(){
 
     }
 
-    public Products(String name, String description, String price, String image, String category, String pid, String date, String time, String productState) {
-        this.name = name;
+    public Products(String pname, String description, String price, String image, String category, String pid, String date, String time, String productState) {
+        this.pname = pname;
         this.description = description;
         this.price = price;
         this.image = image;
@@ -21,12 +21,12 @@ public class Products {
         this.productState = productState;
     }
 
-    public String getName() {
-        return name;
+    public String getPName() {
+        return pname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPName(String name) {
+        this.pname = name;
     }
 
     public String getDescription() {
