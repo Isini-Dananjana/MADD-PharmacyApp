@@ -44,7 +44,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle != null) {
             type = getIntent().getExtras().get("Admin").toString();
@@ -59,13 +59,14 @@ public class HomeActivity extends AppCompatActivity {
 
 
         FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+       fab.setOnClickListener(new View.OnClickListener() {
+         @Override
+           public void onClick(View view) {
+             Intent intent = new Intent(HomeActivity.this,My_Cart.class);
+             startActivity(intent);
+
+            }
+       });
 //        DrawerLayout drawer = findViewById(R.id.drawer_layout);
 //        NavigationView navigationView = findViewById(R.id.nav_view);
 //        // Passing each menu ID as a set of Ids because each
