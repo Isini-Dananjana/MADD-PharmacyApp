@@ -1,5 +1,6 @@
 package com.example.medicare_pharmacyapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -86,12 +87,21 @@ public class HomeActivity extends AppCompatActivity {
         FirebaseRecyclerAdapter<Products, ProductViewHolder> adapter=
                 new FirebaseRecyclerAdapter<Products, ProductViewHolder>(options) {
                     @Override
-                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int i, @NonNull Products model) {
+                    protected void onBindViewHolder(@NonNull ProductViewHolder holder, int i, @NonNull final Products model) {
 
                         holder.txtProductName.setText(model.getName());
                         holder.txtProductDescription.setText(model.getDescription());
                         holder.txtProductPrice.setText("Price = "+model.getPrice() +"LKR");
                         Picasso.get().load(model.getImage()).into(holder.imageView);
+
+                        holder.itemView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent intent = new Intent(HomeActivity.this, com.example.medicare_pharmacyapp.Display_Item.class);
+                                intent.putExtra("pid",model.getPid());
+                                startActivity(intent);
+                            }
+                        });
 
                     }
 
