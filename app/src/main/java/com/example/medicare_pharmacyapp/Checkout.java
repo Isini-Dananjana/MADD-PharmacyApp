@@ -1,28 +1,39 @@
 package com.example.medicare_pharmacyapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 public class Checkout extends AppCompatActivity {
 
-    private Button btn_CheckDel;
+    private RecyclerView recyclerView;
+    private  RecyclerView.LayoutManager layoutManager;
+
+    private Button btn_continue;
+    private TextView total_price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
-     /*   //Add back button
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); //back button
 
-*/
-        //go to delivery page
-        btn_CheckDel = (Button) findViewById(R.id.btn_continue);
-        btn_CheckDel.setOnClickListener(new View.OnClickListener() {
+        recyclerView = findViewById(R.id.cart_list);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        btn_continue = (Button) findViewById(R.id.btn_continue);
+        total_price = (TextView)findViewById(R.id.total_price) ;
+
+        btn_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -38,17 +49,5 @@ public class Checkout extends AppCompatActivity {
 
     }
 
-    /*//back button
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        int id = item.getItemId();
-
-        if(id == android.R.id.home){
-            //end the activity
-            this.finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    //back button*/
 }

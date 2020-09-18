@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.medicare_pharmacyapp.Model.Products;
 import com.example.medicare_pharmacyapp.ViewHolder.ProductViewHolder;
@@ -32,7 +33,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class HomeActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-
+    Button upload_prescription;
     private DatabaseReference ProductsRef;
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
@@ -55,8 +56,16 @@ public class HomeActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
+        //prescription button
+        upload_prescription = (Button) findViewById(R.id.upload_prescription);
+        upload_prescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this,Prescri_Delivery.class);
+                startActivity(intent);
 
-
+            }
+        });//
 
         FloatingActionButton fab = findViewById(R.id.fab);
        fab.setOnClickListener(new View.OnClickListener() {

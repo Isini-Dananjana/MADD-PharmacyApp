@@ -4,26 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/common_google_signin_btn_icon_light_normal_background"
     tools:context=".Delivery">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="454dp"
-        android:layout_height="778dp"
-        android:focusable="auto"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/whitep" />
 
     <TextView
         android:id="@+id/tv_plz"
         android:layout_width="364dp"
         android:layout_height="40dp"
-        android:fontFamily="@font/bree_serif"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/please"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
@@ -36,85 +24,99 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.09" />
 
-    <EditText
-        android:id="@+id/pno2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/pNo"
-        android:inputType="phone"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.47" />
 
     <EditText
-        android:id="@+id/addr2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/pa_addr"
-        android:inputType="textPostalAddress"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617" />
-
-    <EditText
-        android:id="@+id/pa_Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/name2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="57dp"
+        android:background="@drawable/input_design"
+        android:backgroundTintMode="src_in"
         android:ems="10"
         android:hint="@string/name"
         android:inputType="textPostalAddress"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        android:paddingLeft="20dp"
+
+        android:textColor="#158C9A"
+        android:textColorHint="#9F9F9F"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.305" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_plz" />
 
     <EditText
-        android:id="@+id/cty2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/phone2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/input_design"
+        android:backgroundTintMode="src_in"
         android:ems="10"
-        android:hint="@string/pa_city"
-        android:inputType="textPostalAddress"
-        android:textColor="#000000"
-        android:textColorHint="#000000"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        android:hint="@string/pNo"
+        android:inputType="phone"
+        android:paddingLeft="20dp"
+        android:textColor="#158C9A"
+        android:textColorHint="#9F9F9F"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.765" />
+        app:layout_constraintTop_toBottomOf="@+id/name2" />
+
+    <EditText
+        android:id="@+id/addr2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+
+
+        android:layout_marginTop="28dp"
+        android:background="@drawable/input_design"
+        android:backgroundTintMode="src_in"
+        android:ems="10"
+        android:hint="@string/addr"
+        android:inputType="textPostalAddress"
+        android:paddingLeft="20dp"
+        android:textColor="#158C9A"
+        android:textColorHint="#9F9F9F"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phone2" />
+
+    <EditText
+        android:id="@+id/city2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/input_design"
+        android:backgroundTintMode="src_in"
+        android:ems="10"
+        android:hint="@string/cty"
+        android:inputType="textPostalAddress"
+        android:paddingLeft="20dp"
+        android:textColor="#158C9A"
+        android:textColorHint="#9F9F9F"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addr2" />
 
     <Button
         android:id="@+id/btn_confirmDel"
-        android:layout_width="408dp"
-        android:layout_height="91dp"
+        android:layout_width="409dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="166dp"
         android:background="#2199A8"
         android:shadowColor="#FFFFFF"
         android:text="@string/confirm"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/city2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

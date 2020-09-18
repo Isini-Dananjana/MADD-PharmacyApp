@@ -122,6 +122,8 @@
     <string name="title_activity_my_home">MyHomeActivity</string>
     <string name="title_activity_home3">HomeActivity</string>
     <string name="title_activity_main2">MainActivity</string>
+    <string name="Quantity">Quantity</string>
+    <string name="totItem">totItem</string>
 
 
 </resources>

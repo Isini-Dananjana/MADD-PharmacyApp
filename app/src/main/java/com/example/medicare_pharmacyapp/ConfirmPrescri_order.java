@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Confirm_Order extends AppCompatActivity {
+public class ConfirmPrescri_order extends AppCompatActivity {
 
     Button Btn_dialog ;
     private Button btn_ChangeDel;
@@ -18,14 +18,11 @@ public class Confirm_Order extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_confirm__order);
+        setContentView(R.layout.activity_confirm_prescri_order);
+
 
 /*
-        //Add back button
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true); // back button*/
-
-/*        //go to delivery page,if want to change details
+        //go to delivery page,if want to change details
         btn_ChangeDel = (Button) findViewById(R.id.btn_chnge);
         btn_ChangeDel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,8 +30,7 @@ public class Confirm_Order extends AppCompatActivity {
 
                 openDeliChangeDetails();
             }
-        });*/
-/*
+        });
         //go to delivery page,if want to remove details
         btn_RemoveDel = (Button) findViewById(R.id.btn_PresConfirmDel);
         btn_RemoveDel.setOnClickListener(new View.OnClickListener() {
@@ -43,8 +39,7 @@ public class Confirm_Order extends AppCompatActivity {
 
                 openDeliRemoveDetails();
             }
-        });
-*/
+        });*/
 
         //Alert
         Btn_dialog = findViewById(R.id.btn_confirm_alert);
@@ -52,7 +47,7 @@ public class Confirm_Order extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(Confirm_Order.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ConfirmPrescri_order.this);
 
                 //set title
                 builder.setTitle("Medicare");
@@ -67,7 +62,9 @@ public class Confirm_Order extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //close the activity when this button is clicked
-                        /*Confirm_Order.this.finish();*/
+                       /* ConfirmPrescri_order.this.finish();*/
+
+
                     }
                 });
                 //create alert dialog
@@ -81,7 +78,7 @@ public class Confirm_Order extends AppCompatActivity {
     //go to delivery page,if want to change details
     public void openDeliChangeDetails(){
 
-        Intent intent = new Intent(this,Delivery.class);
+        Intent intent = new Intent(this,Prescri_Delivery.class);
         startActivity(intent);
 
 
@@ -89,23 +86,10 @@ public class Confirm_Order extends AppCompatActivity {
     //go to delivery page,if want to remove details
     public void openDeliRemoveDetails(){
 
-        Intent intent = new Intent(this,Delivery.class);
+        Intent intent = new Intent(this,Prescri_Delivery.class);
         startActivity(intent);
 
 
     }
 
-   /* //back button
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
-        int id = item.getItemId();
-
-        if(id == android.R.id.home){
-            //end the activity
-            this.finish();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    //back button*/
 }

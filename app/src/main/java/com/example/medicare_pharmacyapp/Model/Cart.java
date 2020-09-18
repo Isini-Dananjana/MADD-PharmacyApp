@@ -2,17 +2,17 @@ package com.example.medicare_pharmacyapp.Model;
 
 public class Cart {
 
-    private String pid, name, price, quantity, discount;
+    private String pid, pname, price, quantity, discount;
 
 
     public Cart() {
 
     }
 
-    public Cart(String pid, String name, String price, String quantity, String discount) {
+    public Cart(String pid, String pname, String price, String quantity, String discount) {
 
         this.pid = pid;
-        this.name = name;
+        this.pname = pname;
         this.price = price;
         this.quantity = quantity;
         this.discount = discount;
@@ -26,12 +26,12 @@ public class Cart {
         this.pid = pid;
     }
 
-    public String getName() {
-        return name;
+    public String getPName() {
+        return pname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setPName(String name) {
+        this.pname = name;
     }
 
     public String getPrice() {

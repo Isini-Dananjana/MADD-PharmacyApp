@@ -37,7 +37,7 @@ public class Search_Item extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
+/*
         uploadpresbtn = findViewById(R.id.uploadpresbtn);
         uploadpresbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,6 +45,6 @@ public class Search_Item extends AppCompatActivity {
                 Intent i=new Intent(Search_Item.this,Prescri_Delivery.class);
                 startActivity(i);
             }
-        });
+        });*/
     }
 }

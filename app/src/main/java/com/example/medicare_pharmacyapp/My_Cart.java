@@ -48,6 +48,16 @@ public class My_Cart extends AppCompatActivity {
         Next = (Button) findViewById(R.id.next);
         totAmount = (TextView) findViewById(R.id.total_price);
 
+        Next = findViewById(R.id.next);
+        Next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(My_Cart.this,Checkout.class);
+                startActivity(intent);
+
+            }
+        });
+
     }
 
     @Override
@@ -66,7 +76,7 @@ public class My_Cart extends AppCompatActivity {
             protected void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i, @NonNull Cart cart) {
                 cartViewHolder.txtProductQuantity.setText(cart.getQuantity());
                 cartViewHolder.txtProductPrice.setText(cart.getPrice());
-                cartViewHolder.txtProductName.setText(cart.getName());
+                cartViewHolder.txtProductName.setText(cart.getPName());
 
             }
 

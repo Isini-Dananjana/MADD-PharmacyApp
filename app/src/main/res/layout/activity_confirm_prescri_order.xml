@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EDECEC"
+    tools:context=".Confirm_Order">
+
+    <RelativeLayout
+        android:id="@+id/rl11"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp">
+
+        <view
+            android:id="@+id/viewDel"
+            class="androidx.viewpager.widget.ViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btn_chnge"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:background="@drawable/input_design"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/chnge"
+            android:textColor="@color/colorPrimaryDark"
+
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginBottom="220dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/your"
+            android:textColor="#606060"
+            android:textSize="16sp"
+            />
+
+        <EditText
+            android:id="@+id/city1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="30dp"
+
+            android:text="@string/kndy"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            />
+
+        <EditText
+            android:id="@+id/addr1"
+            android:layout_width="294dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="130dp"
+            android:layout_marginBottom="30dp"
+            android:text="@string/pera"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/phone1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="90dp"
+            android:text="@string/numbrr"
+            android:textColor="#000000"
+            />
+
+        <EditText
+            android:id="@+id/name1"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+
+            android:layout_marginStart="5dp"
+
+            android:layout_marginTop="50dp"
+            android:text="@string/pere"
+
+            android:textColor="#000000" />
+
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/btn_confirm_alert"
+        android:layout_width="409dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="9dp"
+        android:background="#2199A8"
+        android:text="@string/confirm"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        />
+
+
+
+
+
+
+
+</RelativeLayout>
