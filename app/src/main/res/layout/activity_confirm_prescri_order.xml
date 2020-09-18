@@ -26,15 +26,15 @@
             android:id="@+id/btn_chnge"
             android:layout_width="90dp"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="3dp"
             android:background="@drawable/input_design"
             android:fontFamily="sans-serif-black"
+
             android:text="@string/chnge"
             android:textColor="@color/colorPrimaryDark"
-
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="20dp"
-            />
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/textView16"
@@ -49,7 +49,7 @@
             android:textSize="16sp"
             />
 
-        <EditText
+        <TextView
             android:id="@+id/city1"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -62,29 +62,28 @@
             android:textColor="#000000"
             />
 
-        <EditText
+        <TextView
             android:id="@+id/addr1"
             android:layout_width="294dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="143dp"
             android:layout_marginBottom="30dp"
             android:text="@string/pera"
             android:textColor="#000000" />
 
-        <EditText
+        <TextView
             android:id="@+id/phone1"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_alignParentTop="true"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="90dp"
+            android:layout_marginTop="97dp"
             android:text="@string/numbrr"
-            android:textColor="#000000"
-            />
+            android:textColor="#000000" />
 
-        <EditText
+        <TextView
             android:id="@+id/name1"
             android:layout_width="wrap_content"
             android:layout_height="40dp"

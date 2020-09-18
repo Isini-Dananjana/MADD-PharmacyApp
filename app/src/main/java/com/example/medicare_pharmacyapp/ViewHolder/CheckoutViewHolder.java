@@ -29,12 +29,7 @@ public class CheckoutViewHolder extends RecyclerView.ViewHolder implements View.
 
     }
 
-    //
-    public void  setItemClickListener(ItemClickListener itemClickListener){
 
-        this.itemClickListener=itemClickListener;
-    }
-    //
 }
 
 

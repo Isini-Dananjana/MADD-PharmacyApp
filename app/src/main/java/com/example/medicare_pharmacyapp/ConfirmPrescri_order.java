@@ -75,7 +75,7 @@ public class ConfirmPrescri_order extends AppCompatActivity {
         });
 
     }
-    //go to delivery page,if want to change details
+/*    //go to delivery page,if want to change details
     public void openDeliChangeDetails(){
 
         Intent intent = new Intent(this,Prescri_Delivery.class);
@@ -90,6 +90,6 @@ public class ConfirmPrescri_order extends AppCompatActivity {
         startActivity(intent);
 
 
-    }
+    }*/
 
 }
