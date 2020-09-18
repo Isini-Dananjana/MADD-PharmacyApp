@@ -36,7 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class SettingActiviy extends AppCompatActivity {
 
     private CircleImageView profileImageView;
-    private EditText fullNameEditText, userPhoneEditText, addressEditText;
+    private EditText fullNameEditText, userPhoneEditText;
     private TextView profileChangeTextButton, closeBtn, saveTextButton;
 
 
@@ -59,14 +59,14 @@ public class SettingActiviy extends AppCompatActivity {
 
         fullNameEditText = (EditText) findViewById(R.id.settings_full_name);
         userPhoneEditText = (EditText) findViewById(R.id.settings_phone_number);
-        addressEditText = (EditText) findViewById(R.id.settings_address);
+
 
         profileChangeTextButton = (TextView) findViewById(R.id.profile_image_change_btn);
         closeBtn = (TextView) findViewById(R.id.close_settings_btn);
         saveTextButton = (TextView) findViewById(R.id.update_account_settings_btn);
 
 
-        userInfoDisplay(profileImageView, fullNameEditText, userPhoneEditText, addressEditText);
+        userInfoDisplay(profileImageView, fullNameEditText, userPhoneEditText);
 
         closeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +119,6 @@ public class SettingActiviy extends AppCompatActivity {
 
         HashMap<String, Object> userMap = new HashMap<>();
         userMap.put("name", fullNameEditText.getText().toString());
-        userMap.put("address", addressEditText.getText().toString());
         userMap.put("phoneOrder", userPhoneEditText.getText().toString());
 
         ref.child(Prevalent.currentonlineUser.getPhone()).updateChildren(userMap);
@@ -164,10 +163,6 @@ public class SettingActiviy extends AppCompatActivity {
         }else if(TextUtils.isEmpty(userPhoneEditText.getText().toString())){
 
             Toast.makeText(this, "Phone number is required", Toast.LENGTH_SHORT).show();
-
-        }else if(TextUtils.isEmpty(addressEditText.getText().toString())){
-
-            Toast.makeText(this, "Address is required", Toast.LENGTH_SHORT).show();
 
         }else if(checker.equals("clicked")){
 
@@ -218,7 +213,7 @@ public class SettingActiviy extends AppCompatActivity {
 
                         HashMap<String, Object> userMap = new HashMap<>();
                         userMap.put("name", fullNameEditText.getText().toString());
-                        userMap.put("address", addressEditText.getText().toString());
+
                         userMap.put("phoneOrder", userPhoneEditText.getText().toString());
                         userMap.put("image", myUrl);
 
@@ -254,7 +249,7 @@ public class SettingActiviy extends AppCompatActivity {
     }
 
 
-    private void userInfoDisplay(final CircleImageView profileImageView, final EditText fullNameEditText, final EditText userPhoneEditText, final EditText addressEditText) {
+    private void userInfoDisplay(final CircleImageView profileImageView, final EditText fullNameEditText, final EditText userPhoneEditText) {
 
         DatabaseReference UsersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(Prevalent.currentonlineUser.getPhone());
 
@@ -269,13 +264,13 @@ public class SettingActiviy extends AppCompatActivity {
                         String image = dataSnapshot.child("image").getValue().toString();
                         String name = dataSnapshot.child("name").getValue().toString();
                         String phone = dataSnapshot.child("phone").getValue().toString();
-                        String address = dataSnapshot.child("address").getValue().toString();
+
 
 
                         Picasso.get().load(image).into(profileImageView);
                         fullNameEditText.setText(name);
                         userPhoneEditText.setText(phone);
-                        addressEditText.setText(address);
+
 
                     }
 

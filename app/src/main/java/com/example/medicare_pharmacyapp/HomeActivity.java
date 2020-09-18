@@ -3,12 +3,15 @@ package com.example.medicare_pharmacyapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.medicare_pharmacyapp.Model.Products;
+import com.example.medicare_pharmacyapp.Prevalent.Prevalent;
 import com.example.medicare_pharmacyapp.ViewHolder.ProductViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -30,7 +33,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class HomeActivity extends AppCompatActivity {
+import de.hdodenhof.circleimageview.CircleImageView;
+import io.paperdb.Paper;
+
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     Button upload_prescription;
@@ -51,11 +57,13 @@ public class HomeActivity extends AppCompatActivity {
             type = getIntent().getExtras().get("Admin").toString();
         }
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("products");
-
+        Paper.init(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle("Home");
         setSupportActionBar(toolbar);
+
+
         //prescription button
         upload_prescription = (Button) findViewById(R.id.upload_prescription);
         upload_prescription.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +98,18 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-    recyclerView = findViewById(R.id.recycler_menu);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
+        CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
+
+        userNameTextView.setText(Prevalent.currentonlineUser.getName());
+        Picasso.get().load(Prevalent.currentonlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+
+
+        recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
     layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -157,6 +176,46 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id = item.getItemId();
+
+//        if (id == R.id.action_settings)
+//        {
+//            return true;
+//        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.nav_cart)
+        {
+            Intent intent = new Intent(HomeActivity.this,My_Cart.class);
+            startActivity(intent);
+
+        }
+        else if (id == R.id.nav_settings)
+        {
+            Intent intent = new Intent(HomeActivity.this,SettingActiviy.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_feedback)
+        {
+
+        }else if (id == R.id.nav_logout){
+            Paper.book().destroy();
+
+            Intent intent = new Intent(HomeActivity.this,Login_signupActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        }
         return true;
     }
 }

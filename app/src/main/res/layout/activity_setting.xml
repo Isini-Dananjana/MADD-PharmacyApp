@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SettingActivity">
+    tools:context=".SettingActiviy"
+    android:background="#CADEE1"
+    >
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar_settings"
@@ -83,6 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/profile_image_change_btn"
         android:hint="Phone Number"
+        android:background="@drawable/input_design"
         android:layout_margin="15dp"
         android:padding="10dp"
         />
@@ -93,17 +96,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/settings_phone_number"
         android:hint="Full Name"
+        android:background="@drawable/input_design"
         android:layout_margin="15dp"
         android:padding="10dp"/>
 
-    <EditText
-        android:id="@+id/settings_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/settings_full_name"
-        android:hint="Delivery Address"
-        android:layout_margin="15dp"
-        android:padding="10dp"/>
+
 
 
 </RelativeLayout>
