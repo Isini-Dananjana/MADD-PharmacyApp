@@ -24,6 +24,8 @@ import com.example.medicare_pharmacyapp.ViewHolder.CartViewHolder;
 import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -73,10 +75,67 @@ public class My_Cart extends AppCompatActivity {
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter
                 = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i, @NonNull Cart cart) {
-                cartViewHolder.txtProductQuantity.setText(cart.getQuantity());
-                cartViewHolder.txtProductPrice.setText(cart.getPrice());
+            protected void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i, @NonNull final Cart cart) {
+                cartViewHolder.txtProductQuantity.setText("Quantity = "+cart.getQuantity());
+                cartViewHolder.txtProductPrice.setText("Price = "+cart.getPrice()+" LKR");
                 cartViewHolder.txtProductName.setText(cart.getPName());
+
+                cartViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        CharSequence options[] = new CharSequence[]
+                                {
+                                        "Edit",
+                                        "Remove"
+
+                                };
+                        AlertDialog.Builder builder = new AlertDialog.Builder(My_Cart.this);
+                        builder.setTitle("Cart Options:");
+
+                        builder.setItems(options, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                if(i == 0){
+
+                                    Intent intent = new Intent(My_Cart.this,Display_Item.class);
+                                    intent.putExtra("pid",cart.getPid());
+                                    startActivity(intent);
+                                }
+                                if(i == 1){
+
+                                    cartListRef.child("User View")
+                                            .child(Prevalent.currentonlineUser.getPhone())
+                                            .child("products")
+                                            .child(cart.getPid())
+                                            .removeValue()
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+
+                                                    if(task.isSuccessful()){
+
+                                                        Toast.makeText(My_Cart.this,"item removed from cart",Toast.LENGTH_SHORT).show();
+
+                                                        Intent intent = new Intent(My_Cart.this,HomeActivity.class);
+                                                        startActivity(intent);
+
+                                                    }
+
+                                                }
+                                            });
+
+                                }
+                            }
+                        });
+
+                        builder.show();
+
+
+
+                    }
+                });
 
             }
 
