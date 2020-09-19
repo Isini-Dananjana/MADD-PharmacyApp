@@ -37,7 +37,7 @@ public class Confirm_Order extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm__order);
 
-        recyclerView = findViewById(R.id.cart_list);
+        recyclerView = findViewById(R.id.orders_list);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);

@@ -1,108 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent2">
+    tools:context=".adminNewOrederItems">
 
     <RelativeLayout
+        android:id="@+id/rel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="@dimen/activity_horizontal_margin"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/buttons"
-        android:padding="10dp">
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentTop="true">
 
         <TextView
-            android:id="@+id/order_name"
+            android:id="@+id/total_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="AKINICARE LOTION 120mg"
+            android:text="Products"
             android:textColor="@android:color/white"
-            android:textSize="14dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/order_qty"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="5dp"
-            android:gravity="end"
-            android:text="QTY : 1"
-            android:textAlignment="viewEnd"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/order_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/order_qty"
-            android:layout_marginTop="25dp"
-            android:text="Price : LKR 1200.00"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"/>
     </RelativeLayout>
 
-    <RelativeLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/products_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/buttons"
-        android:padding="10dp">
-
-        <TextView
-            android:id="@+id/order_name1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="BIOGLAN SUPER FISH OIL 100s"
-            android:textColor="@android:color/white"
-            android:textSize="14dp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/order_qty1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="5dp"
-            android:gravity="end"
-            android:text="QTY : 1"
-            android:textAlignment="viewEnd"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/order_price1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/order_qty1"
-            android:layout_marginTop="25dp"
-            android:text="Price : LKR 800.00"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rel"
+        android:layout_above="@+id/next">
 
 
-    </RelativeLayout>
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </RelativeLayout>
-
-
-
-
-

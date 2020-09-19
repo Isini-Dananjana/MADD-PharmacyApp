@@ -44,7 +44,7 @@
             android:name=".ViewPrescriptions"
             android:label="New Prescriptions" />
         <activity
-            android:name=".NewOrederitems"
+            android:name=".adminNewOrederItems"
             android:label="Order Items" />
         <activity
             android:name=".admin_newOrders"

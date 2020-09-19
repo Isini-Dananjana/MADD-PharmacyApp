@@ -1,111 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent2">
-
+    tools:context=".admin_newOrders">
 
     <RelativeLayout
-        android:id="@+id/txtViewShowAlert"
+        android:id="@+id/rel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/buttons"
-        android:clickable="false"
-        android:onClick="show_alert"
-        android:padding="10dp">
-
+        android:layout_height="50dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentTop="true">
 
         <TextView
-            android:id="@+id/order_del"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="5dp"
-            android:gravity="end"
-            android:text="@string/delOrder"
-            android:textColor="@android:color/secondary_text_light"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-
-        <TextView
-            android:id="@+id/order_username"
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/order_del"
-            android:layout_marginLeft="5dp"
-            android:text="@string/CusNme"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/order_phonenumber"
+            android:id="@+id/total_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/order_username"
-            android:layout_marginLeft="5dp"
-            android:text="Phone Number : 076-67856456"
+            android:text="New Orders"
             android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/order_totalprice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/order_phonenumber"
-            android:layout_marginTop="25dp"
-            android:text="Total Price : LKR 2000.00"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/order_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/order_totalprice"
-            android:layout_marginTop="10dp"
-            android:text="Address : No3, James Peris Road,Colombo3"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/order_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/order_address"
-            android:layout_marginTop="10dp"
-            android:text="Date : 13/8/2020"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/show_allproducts_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/order_date"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="20dp"
-            android:background="@color/colorAccent2"
-            android:text="@string/orderIt"
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="18dp" />
-
-
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"/>
     </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/orders_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rel"
+        android:layout_above="@+id/next">
+
+
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 
 </RelativeLayout>
-
