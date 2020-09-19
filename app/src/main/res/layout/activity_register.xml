@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/log1"
+    android:background="@drawable/back3"
     tools:context=".RegisterActivity">
 
     <ImageView
@@ -21,10 +21,10 @@
         android:src="@drawable/plus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.012" />
+        app:layout_constraintVertical_bias="0.01" />
 
     <EditText
         android:id="@+id/register_user_name_Input"
@@ -38,7 +38,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/input_design"
-        android:backgroundTint="#C1EEF0F1"
+        android:backgroundTint="#C1ABDBF3"
         android:hint="@string/name"
         android:inputType="text"
         android:padding="20dp"
@@ -81,7 +81,7 @@
         android:layout_marginTop="13dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/input_design"
-        android:backgroundTint="#C1EEF0F1"
+        android:backgroundTint="#C1ABDBF3"
         android:hint="@string/phone_number"
         android:inputType="number"
         android:padding="20dp"
@@ -107,7 +107,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/input_design"
-        android:backgroundTint="#C1EEF0F1"
+        android:backgroundTint="#C1ABDBF3"
 
         android:hint="@string/password"
         android:padding="20dp"

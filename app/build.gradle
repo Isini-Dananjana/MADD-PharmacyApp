@@ -46,6 +46,7 @@ dependencies {
     implementation  'com.firebase:firebase-client-android:2.4.0'
     // implementation 'com.google.firebase:firebase-core:17.5.0'
 
+
     implementation 'com.google.firebase:firebase-firestore:21.6.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
