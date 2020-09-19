@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.medicare_pharmacyapp.Prevalent.Prevalent;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,7 +36,7 @@ public class Prescri_Delivery extends AppCompatActivity {
     private ImageView imgPresc11;
     private Button btn_PresConfirmDel;
     private EditText name1,phone1,addr1,city1;
-    private String Cname , PhoneNo,Address, City,saveCurrentdate,saveCurrentTime;
+    private String Cname , PhoneNo,Address, City;
     private static final int GalleryPick = 1;
     private Uri ImageUri;
     private String PrescriptionsRandomKey, downloadImageUrl;
@@ -60,15 +61,15 @@ public class Prescri_Delivery extends AppCompatActivity {
         phone1 = (EditText)findViewById(R.id.phone1);
         addr1 = (EditText)findViewById(R.id.addr1);
         city1 = (EditText)findViewById(R.id.city1);
-        loadingBar = new ProgressDialog(this);
+        /*loadingBar = new ProgressDialog(this);*/
 
-      /*  btn_PresConfirmDel.setOnClickListener(new View.OnClickListener() {
+        btn_PresConfirmDel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Prescri_Delivery.this,ConfirmPrescri_order.class);
-                startActivity(i);
+            public void onClick(View v)
+            {
+                Check();
             }
-        });*/
+        });
 
 
         imgPresc11.setOnClickListener(new View.OnClickListener() {
@@ -78,17 +79,16 @@ public class Prescri_Delivery extends AppCompatActivity {
                 OpenGallery();
             }
         });
-        btn_PresConfirmDel.setOnClickListener(new View.OnClickListener() {
+ /*       btn_PresConfirmDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view)
             {
                 ValidateProductData();
             }
         });
-
+*/
 
     }
-
     private void OpenGallery()
     {
         Intent galleryIntent = new Intent();
@@ -96,7 +96,6 @@ public class Prescri_Delivery extends AppCompatActivity {
         galleryIntent.setType("image/*");
         startActivityForResult(galleryIntent, GalleryPick);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
@@ -109,7 +108,9 @@ public class Prescri_Delivery extends AppCompatActivity {
         }
     }
 
-    private void ValidateProductData()
+
+
+    private void Check()
     {
         Cname = name1.getText().toString();
         PhoneNo = phone1.getText().toString();
@@ -122,7 +123,7 @@ public class Prescri_Delivery extends AppCompatActivity {
         }
         else if (TextUtils.isEmpty(Cname))
         {
-            Toast.makeText(this, "Please enter your name...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please provide your name...", Toast.LENGTH_SHORT).show();
         }
         else if (TextUtils.isEmpty(PhoneNo))
         {
@@ -140,18 +141,13 @@ public class Prescri_Delivery extends AppCompatActivity {
         {
             StoreProductInformation();
         }
+
     }
 
-    private void StoreProductInformation() {
-
-        loadingBar.setIcon(R.drawable.plus);
-        loadingBar.setTitle("Medicare");
-        loadingBar.setMessage("Please Wait......");
-        loadingBar.setCanceledOnTouchOutside(false);
-        loadingBar.show();
-
+    private void StoreProductInformation()
+    {
+        final String saveCurrentdate,saveCurrentTime;
         Calendar calendar = Calendar.getInstance();
-
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
         saveCurrentdate = currentDate.format(calendar.getTime());
 
@@ -160,11 +156,8 @@ public class Prescri_Delivery extends AppCompatActivity {
 
         PrescriptionsRandomKey = saveCurrentdate + saveCurrentTime;
 
-
         final StorageReference filePath = PrescriptionsImagesRef.child(ImageUri.getLastPathSegment() + PrescriptionsRandomKey + ".jpg");
-
         final UploadTask uploadTask = filePath.putFile(ImageUri);
-
 
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
@@ -172,9 +165,11 @@ public class Prescri_Delivery extends AppCompatActivity {
             {
                 String message = e.toString();
                 Toast.makeText(Prescri_Delivery.this, "Error: " + message, Toast.LENGTH_LONG).show();
-                loadingBar.dismiss();
+
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+
+
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
             {
@@ -194,57 +189,78 @@ public class Prescri_Delivery extends AppCompatActivity {
                     }
                 }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                     @Override
-                    public void onComplete(@NonNull Task<Uri> task)
-                    {
-                        if (task.isSuccessful())
-                        {
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()) {
                             downloadImageUrl = task.getResult().toString();
 
-                            Toast.makeText(Prescri_Delivery.this, "got the Prescription image Url Successfully...", Toast.LENGTH_SHORT).show();
+                           /* Toast.makeText(Prescri_Delivery.this, "got the Prescription image Url Successfully...", Toast.LENGTH_SHORT).show();*/
 
                             SaveProductInfoToDatabase();
                         }
                     }
+                    });
+
+
+                    }
                 });
-            }
-        });
+
 
     }
 
     private void SaveProductInfoToDatabase()
+
     {
-        HashMap<String, Object> productMap = new HashMap<>();
-        productMap.put("PrescId", PrescriptionsRandomKey);
-        productMap.put("date", saveCurrentdate);
-        productMap.put("time", saveCurrentTime);
-        productMap.put("CustomerName", Cname);
-        productMap.put("image", downloadImageUrl);
-        productMap.put("PhoneNo", PhoneNo);
-        productMap.put("Address", Address);
-        productMap.put("City", City);
+        final String saveCurrentdate,saveCurrentTime;
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+        saveCurrentdate = currentDate.format(calendar.getTime());
 
-        PrescriptionsRef.child(PrescriptionsRandomKey).updateChildren(productMap)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task)
-                    {
-                        if (task.isSuccessful())
-                        {
-                            /*Intent intent1 = new Intent(Prescri_Delivery.this, ConfirmPrescri_order.class);
-                            startActivity(intent1);*/
+        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+        saveCurrentTime = currentTime.format(calendar.getTime());
 
-                            loadingBar.dismiss();
-                            Toast.makeText(Prescri_Delivery.this, " Successfull..", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            loadingBar.dismiss();
-                            String message = task.getException().toString();
-                            Toast.makeText(Prescri_Delivery.this, "Error: " + message, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+        HashMap<String,Object> PrescriptionMap = new HashMap<>();
+
+        PrescriptionMap.put("date", saveCurrentdate);
+        PrescriptionMap.put("time", saveCurrentTime);
+        PrescriptionMap.put("name", name1.getText().toString());
+        PrescriptionMap.put("image", downloadImageUrl);
+        PrescriptionMap.put("phone", phone1.getText().toString());
+        PrescriptionMap.put("address", addr1.getText().toString());
+        PrescriptionMap.put("city", city1.getText().toString());
+        PrescriptionMap.put("State", "not shipped");
+
+        final DatabaseReference PrescriptionsRef =  FirebaseDatabase.getInstance().getReference().child("Prescription Orders").
+                child(Prevalent.currentonlineUser.getPhone());
+
+
+        PrescriptionsRef.updateChildren(PrescriptionMap).addOnCompleteListener(new OnCompleteListener<Void>()
+        {
+            @Override
+            public void onComplete(@NonNull Task<Void> task)
+            {
+                if(task.isSuccessful())
+                {
+                    Toast.makeText(Prescri_Delivery.this,"Your final order has placed successful..",Toast.LENGTH_SHORT).show();
+                    Intent intent =new  Intent(Prescri_Delivery.this,HomeActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                }
+
+
+
+
+            }
+        });
+
+
+
+            }
+
+
+
     }
 
 
-}
+
+

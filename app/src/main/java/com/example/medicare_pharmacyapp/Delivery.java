@@ -38,8 +38,8 @@ public class Delivery extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery);
 
-        totalAmount = getIntent().getStringExtra("Total Price");
-        Toast.makeText(this,"Total Price = "+totalAmount+"LKR",Toast.LENGTH_SHORT);
+  /*      totalAmount = getIntent().getStringExtra("Total Price");
+        Toast.makeText(this,"Total Price = "+totalAmount+"LKR",Toast.LENGTH_SHORT);*/
 
 
         btn_DelConfirm = (Button) findViewById(R.id.btn_confirmDel);
@@ -71,19 +71,26 @@ public class Delivery extends AppCompatActivity {
 
     private void Check()
     {
-        if(TextUtils.isEmpty(name2.getText().toString()))
+        Cname = name2.getText().toString();
+        PhoneNo = phone2.getText().toString();
+        Address= addr2.getText().toString();
+        City=city2.getText().toString();
+
+
+
+        if(TextUtils.isEmpty(Cname))
         {
             Toast.makeText(this,"Please provide your full name.. ",Toast.LENGTH_SHORT);
         }
-        else if(TextUtils.isEmpty(phone2.getText().toString()))
+        else if(TextUtils.isEmpty(PhoneNo))
         {
             Toast.makeText(this,"Please provide your phone number.. ",Toast.LENGTH_SHORT);
         }
-        else if(TextUtils.isEmpty(addr2.getText().toString()))
+        else if(TextUtils.isEmpty(Address))
         {
             Toast.makeText(this,"Please provide your address.. ",Toast.LENGTH_SHORT);
         }
-        else if(TextUtils.isEmpty(city2.getText().toString()))
+        else if(TextUtils.isEmpty(City))
         {
             Toast.makeText(this,"Please provide your city name.. ",Toast.LENGTH_SHORT);
         }

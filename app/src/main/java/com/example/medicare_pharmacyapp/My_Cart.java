@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telecom.Call;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,9 @@ import android.widget.Toast;
 
 import com.example.medicare_pharmacyapp.Model.Cart;
 import com.example.medicare_pharmacyapp.Prevalent.Prevalent;
+import com.example.medicare_pharmacyapp.R;
 import com.example.medicare_pharmacyapp.ViewHolder.CartViewHolder;
+import com.firebase.client.Firebase;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
