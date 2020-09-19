@@ -7,19 +7,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import io.paperdb.Paper;
+
 public class AdminPanel extends AppCompatActivity {
 
     private Button addItem;
     private Button manageItem;
     private Button newOrder;
     private Button newprescrption;
-
+    private Button logout;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_panel);
+
+        Paper.init(this);
 
         addItem = (Button)findViewById(R.id.addItems_btn);
        addItem.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +62,19 @@ public class AdminPanel extends AppCompatActivity {
                 Intent intent = new Intent(AdminPanel.this, newPrescriptions.class);
                 intent.putExtra("newPres","newprescription");
                 startActivity(intent);
+            }
+        });
+
+        logout = (Button)findViewById(R.id.admin_logout_btn);
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Paper.book().destroy();
+
+                Intent intent = new Intent(AdminPanel.this,Login_signupActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
             }
         });
 
