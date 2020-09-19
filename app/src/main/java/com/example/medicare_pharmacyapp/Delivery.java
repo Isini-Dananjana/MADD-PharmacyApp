@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.medicare_pharmacyapp.Prevalent.Prevalent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -26,128 +27,122 @@ public class Delivery extends AppCompatActivity {
 
     private Button btn_DelConfirm;
     private EditText name2,phone2,addr2,city2;
-    private String Cname , PhoneNo,Address, City,saveCurrentdate,saveCurrentTime;
-    /*  private static final int GalleryPick = 1;*/
-    /* private Uri ImageUri;*/
-    private String DeliveryRandomKey, downloadImageUrl;
-    /*    private StorageReference PrescriptionsImagesRef;*/
+    private String Cname , PhoneNo,Address, City;
+    private String DeliveryRandomKey;
     private DatabaseReference DeliveryRef;
     private ProgressDialog loadingBar;
+    private String totalAmount = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery);
 
-        DeliveryRef = FirebaseDatabase.getInstance().getReference().child("Delivery");
+        totalAmount = getIntent().getStringExtra("Total Price");
+        Toast.makeText(this,"Total Price = "+totalAmount+"LKR",Toast.LENGTH_SHORT);
+
 
         btn_DelConfirm = (Button) findViewById(R.id.btn_confirmDel);
         name2 = (EditText) findViewById(R.id.name2);
         phone2 = (EditText) findViewById(R.id.phone2);
         addr2 = (EditText) findViewById(R.id.addr2);
         city2 = (EditText) findViewById(R.id.city2);
-        loadingBar = new ProgressDialog(this);
+        /*loadingBar = new ProgressDialog(this);*/
 
         btn_DelConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v)
+            {
+                Check();
+            }
+        });
+
+   /*     btn_DelConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Delivery.this, Confirm_Order.class);
                 startActivity(i);
             }
         });
+*/
 
-        btn_DelConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                ValidateProductData();
-            }
-        });
     }
 
-    private void ValidateProductData()
+
+    private void Check()
     {
-        Cname = name2.getText().toString();
-        PhoneNo = phone2.getText().toString();
-        Address= addr2.getText().toString();
-        City=city2.getText().toString();
-
-
-        if (TextUtils.isEmpty(Cname))
+        if(TextUtils.isEmpty(name2.getText().toString()))
         {
-            Toast.makeText(this, "Please enter your name...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please provide your full name.. ",Toast.LENGTH_SHORT);
         }
-        else if (TextUtils.isEmpty(PhoneNo))
+        else if(TextUtils.isEmpty(phone2.getText().toString()))
         {
-            Toast.makeText(this, "Please enter your phone no...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please provide your phone number.. ",Toast.LENGTH_SHORT);
         }
-        else if (TextUtils.isEmpty(Address))
+        else if(TextUtils.isEmpty(addr2.getText().toString()))
         {
-            Toast.makeText(this, "Please enter your address...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please provide your address.. ",Toast.LENGTH_SHORT);
         }
-        else if (TextUtils.isEmpty(City))
+        else if(TextUtils.isEmpty(city2.getText().toString()))
         {
-            Toast.makeText(this, "Please enter your city...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Please provide your city name.. ",Toast.LENGTH_SHORT);
         }
         else
         {
-            StoreProductInformation();
+            ConfirmOrder();
         }
     }
-    private void StoreProductInformation() {
 
-        loadingBar.setIcon(R.drawable.plus);
-        loadingBar.setTitle("Medicare");
-        loadingBar.setMessage("Please Wait......");
-        loadingBar.setCanceledOnTouchOutside(false);
-        loadingBar.show();
-
+    private void ConfirmOrder()
+    {
+       final String saveCurrentdate,saveCurrentTime;
         Calendar calendar = Calendar.getInstance();
-
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
         saveCurrentdate = currentDate.format(calendar.getTime());
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(calendar.getTime());
 
-        DeliveryRandomKey = saveCurrentdate + saveCurrentTime;
+        final DatabaseReference ordersRef =  FirebaseDatabase.getInstance().getReference().child("Orders").
+                child(Prevalent.currentonlineUser.getPhone());
+        HashMap<String,Object> ordersMap = new HashMap<>();
 
-        SaveProductInfoToDatabase();
+        ordersMap.put("totalAmount", totalAmount);
+        ordersMap.put("name", name2.getText().toString());
+        ordersMap.put("phone", phone2.getText().toString());
+        ordersMap.put("address", addr2.getText().toString());
+        ordersMap.put("city", city2.getText().toString());
+        ordersMap.put("date", saveCurrentdate);
+        ordersMap.put("time", saveCurrentTime);
+        ordersMap.put("state","not shipped");
 
-    }
-    private void SaveProductInfoToDatabase()
-    {
-        HashMap<String, Object> productMap = new HashMap<>();
-        productMap.put("DeliveryId", DeliveryRandomKey);
-        productMap.put("date", saveCurrentdate);
-        productMap.put("time", saveCurrentTime);
-        productMap.put("CustomerName", Cname);
 
-        productMap.put("PhoneNo", PhoneNo);
-        productMap.put("Address", Address);
-        productMap.put("City", City);
-
-        DeliveryRef.child(DeliveryRandomKey).updateChildren(productMap)
-                .addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task)
-                    {
-                        if (task.isSuccessful())
+        ordersRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task)
+            {
+                if(task.isSuccessful())
+                {
+                    FirebaseDatabase.getInstance().getReference().child("Cart List").
+                            child("User View").child(Prevalent.currentonlineUser.getPhone()).
+                            removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task)
                         {
-                            Intent intent1 = new Intent(Delivery.this, Confirm_Order.class);
-                            startActivity(intent1);
+                            if(task.isSuccessful())
+                            {
+                                Toast.makeText(Delivery.this,"Your final order has placed successful..",Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(Delivery.this,Confirm_Order.class);
+                               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(intent);
+                                finish();
+                            }
+                        }
+                    });
+                }
 
-                            loadingBar.dismiss();
-                            Toast.makeText(Delivery.this, " Successfull..", Toast.LENGTH_SHORT).show();
-                        }
-                        else
-                        {
-                            loadingBar.dismiss();
-                            String message = task.getException().toString();
-                            Toast.makeText(Delivery.this, "Error: " + message, Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
+            }
+        });
     }
 
 

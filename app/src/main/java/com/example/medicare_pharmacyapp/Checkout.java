@@ -45,7 +45,7 @@ public class Checkout extends AppCompatActivity {
 
 
 
-        btn_continue = findViewById(R.id.btn_continue);
+  /*      btn_continue = findViewById(R.id.btn_continue);
         btn_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +53,7 @@ public class Checkout extends AppCompatActivity {
                 startActivity(intent);
 
             }
-        });
+        });*/
     }
     @Override
     protected void onStart() {

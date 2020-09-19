@@ -62,13 +62,13 @@ public class Prescri_Delivery extends AppCompatActivity {
         city1 = (EditText)findViewById(R.id.city1);
         loadingBar = new ProgressDialog(this);
 
-        btn_PresConfirmDel.setOnClickListener(new View.OnClickListener() {
+      /*  btn_PresConfirmDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(Prescri_Delivery.this,ConfirmPrescri_order.class);
                 startActivity(i);
             }
-        });
+        });*/
 
 
         imgPresc11.setOnClickListener(new View.OnClickListener() {
@@ -230,8 +230,8 @@ public class Prescri_Delivery extends AppCompatActivity {
                     {
                         if (task.isSuccessful())
                         {
-                            Intent intent1 = new Intent(Prescri_Delivery.this, ConfirmPrescri_order.class);
-                            startActivity(intent1);
+                            /*Intent intent1 = new Intent(Prescri_Delivery.this, ConfirmPrescri_order.class);
+                            startActivity(intent1);*/
 
                             loadingBar.dismiss();
                             Toast.makeText(Prescri_Delivery.this, " Successfull..", Toast.LENGTH_SHORT).show();

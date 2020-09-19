@@ -54,7 +54,7 @@ public class My_Cart extends AppCompatActivity {
         Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(My_Cart.this,Checkout.class);
+                Intent intent = new Intent(My_Cart.this,Delivery.class);
                 startActivity(intent);
 
             }
