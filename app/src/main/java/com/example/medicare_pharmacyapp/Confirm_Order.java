@@ -37,7 +37,7 @@ public class Confirm_Order extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm__order);
 
-        recyclerView = findViewById(R.id.orders_list);
+        recyclerView = findViewById(R.id.cart_list);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -47,7 +47,7 @@ public class Confirm_Order extends AppCompatActivity {
 
 
         btn_Change = findViewById(R.id.btn_chnge);
-        btn_Change.setOnClickListener(new View.OnClickListener() {
+ /*       btn_Change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Confirm_Order.this,EditDelivery.class);
@@ -55,7 +55,7 @@ public class Confirm_Order extends AppCompatActivity {
 
             }
         });
-
+*/
         //Alert
         Btn_dialog = findViewById(R.id.btn_confirm_alert);
         Btn_dialog.setOnClickListener(new View.OnClickListener() {
