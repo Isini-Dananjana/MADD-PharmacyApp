@@ -105,9 +105,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        userNameTextView.setText(Prevalent.currentonlineUser.getName());
-        Picasso.get().load(Prevalent.currentonlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
-
+        if(!type.equals("Admin")) {
+            userNameTextView.setText(Prevalent.currentonlineUser.getName());
+            Picasso.get().load(Prevalent.currentonlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        }
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
@@ -196,25 +197,30 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.nav_cart)
         {
-            Intent intent = new Intent(HomeActivity.this,My_Cart.class);
-            startActivity(intent);
-
+            if(!type.equals("Admin")) {
+                Intent intent = new Intent(HomeActivity.this, My_Cart.class);
+                startActivity(intent);
+            }
         }
         else if (id == R.id.nav_settings)
         {
-            Intent intent = new Intent(HomeActivity.this,SettingActiviy.class);
-            startActivity(intent);
+            if(!type.equals("Admin")) {
+                Intent intent = new Intent(HomeActivity.this, SettingActiviy.class);
+                startActivity(intent);
+            }
         }
         else if (id == R.id.nav_feedback)
         {
-
+            if(!type.equals("Admin")) {}
         }else if (id == R.id.nav_logout){
-            Paper.book().destroy();
+            if(!type.equals("Admin")) {
+                Paper.book().destroy();
 
-            Intent intent = new Intent(HomeActivity.this,Login_signupActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
+                Intent intent = new Intent(HomeActivity.this, Login_signupActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
         }
         return true;
     }
