@@ -9,15 +9,19 @@
     tools:showIn="@layout/app_bar_home">
 
 
+
     <Button
         android:id="@+id/upload_prescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"
-        android:layout_margin="15dp"
+        android:layout_margin="12dp"
         android:text="UPLOAD PRESCRIPTION"
         android:textSize="18dp"
         android:textColor="@android:color/white"/>
+
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_menu"
@@ -27,5 +31,6 @@
         android:scrollbars="vertical">
 
     </androidx.recyclerview.widget.RecyclerView>
+
 
 </RelativeLayout>

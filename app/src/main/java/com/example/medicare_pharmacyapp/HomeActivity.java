@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.medicare_pharmacyapp.Model.Products;
@@ -39,8 +40,15 @@ import io.paperdb.Paper;
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
+
+
+
+    //upload prescription button
     Button upload_prescription;
+
     private DatabaseReference ProductsRef;
+
+    //recycler view
     private RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
 
@@ -64,6 +72,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
 
+
+
+
+
         //prescription button
         upload_prescription = (Button) findViewById(R.id.upload_prescription);
         upload_prescription.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +87,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });//
 
+        //cart button
         FloatingActionButton fab = findViewById(R.id.fab);
        fab.setOnClickListener(new View.OnClickListener() {
          @Override
@@ -105,10 +118,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-        if(!type.equals("Admin")) {
+
             userNameTextView.setText(Prevalent.currentonlineUser.getName());
             Picasso.get().load(Prevalent.currentonlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
-        }
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
@@ -116,10 +128,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         recyclerView.setLayoutManager(layoutManager);
 }
 
+
     @Override
     protected void onStart() {
         super.onStart();
 
+
+        //recycler view
         FirebaseRecyclerOptions<Products> options=
                 new FirebaseRecyclerOptions.Builder<Products>()
                         .setQuery(ProductsRef, Products.class)
@@ -197,30 +212,32 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.nav_cart)
         {
-            if(!type.equals("Admin")) {
-                Intent intent = new Intent(HomeActivity.this, My_Cart.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(HomeActivity.this,My_Cart.class);
+            startActivity(intent);
+
+        }
+        else if (id == R.id.nav_search)
+        {
+
+            Intent intent = new Intent(HomeActivity.this,SearchProductsActivity.class);
+            startActivity(intent);
+
         }
         else if (id == R.id.nav_settings)
         {
-            if(!type.equals("Admin")) {
-                Intent intent = new Intent(HomeActivity.this, SettingActiviy.class);
-                startActivity(intent);
-            }
+            Intent intent = new Intent(HomeActivity.this,SettingActiviy.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_feedback)
         {
-            if(!type.equals("Admin")) {}
-        }else if (id == R.id.nav_logout){
-            if(!type.equals("Admin")) {
-                Paper.book().destroy();
 
-                Intent intent = new Intent(HomeActivity.this, Login_signupActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
-                finish();
-            }
+        }else if (id == R.id.nav_logout){
+            Paper.book().destroy();
+
+            Intent intent = new Intent(HomeActivity.this,Login_signupActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         }
         return true;
     }
