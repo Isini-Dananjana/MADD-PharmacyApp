@@ -68,13 +68,10 @@ public class newPrescriptions extends AppCompatActivity {
                       /*  adminOrdersViewHolder.pres.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-
                                 String uID = getRef(option).getKey();
-
                                 Intent intent = new Intent(newPrescriptions.this, ViewPrescriptions.class);
                                 intent.putExtra("uid", uID);
                                 startActivity(intent);
-
                             }
                         });*/
 

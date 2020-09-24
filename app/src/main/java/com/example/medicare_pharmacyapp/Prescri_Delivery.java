@@ -240,8 +240,8 @@ public class Prescri_Delivery extends AppCompatActivity {
             {
                 if(task.isSuccessful())
                 {
-                    Toast.makeText(Prescri_Delivery.this,"Your final order has placed successful..",Toast.LENGTH_SHORT).show();
-                    Intent intent =new  Intent(Prescri_Delivery.this,HomeActivity.class);
+
+                    Intent intent =new  Intent(Prescri_Delivery.this,ConfirmPrescri_order.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();

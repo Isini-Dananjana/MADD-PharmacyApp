@@ -1,45 +1,153 @@
 package com.example.medicare_pharmacyapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.medicare_pharmacyapp.Model.Pres_Delivery;
+import com.example.medicare_pharmacyapp.Prevalent.Prevalent;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.StorageReference;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class ConfirmPrescri_order extends AppCompatActivity {
 
+    Pres_Delivery deliver;
     Button Btn_dialog ;
-    private Button btn_ChangeDel;
-    private Button btn_RemoveDel;
+    private DatabaseReference ordersRef;
+    private DataSnapshot dataSnapshot;
+    private Button btn_Change;
+    private EditText name3, phone3, address3, city3;
+    private static final int GalleryPick = 1;
+    private Uri ImageUri;
+    private StorageReference PrescriptionsImagesRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm_prescri_order);
 
+        //edit text
+        name3 = findViewById(R.id.name3);
+        phone3 = findViewById(R.id.phone3);
+        address3 = findViewById(R.id.address3);
+        city3 = findViewById(R.id.city3);
 
-/*
-        //go to delivery page,if want to change details
-        btn_ChangeDel = (Button) findViewById(R.id.btn_chnge);
-        btn_ChangeDel.setOnClickListener(new View.OnClickListener() {
+        btn_Change = findViewById(R.id.btn_Change);
+        deliver = new Pres_Delivery();
+
+        DatabaseReference ordersRef =  FirebaseDatabase.getInstance().getReference().child("Prescription Orders").
+                child(Prevalent.currentonlineUser.getPhone());
+
+
+        ordersRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onClick(View view) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                openDeliChangeDetails();
+                if(dataSnapshot.hasChildren()){
+                    name3.setText(dataSnapshot.child("name").getValue().toString());
+                    phone3.setText(dataSnapshot.child("phone").getValue().toString());
+                    address3.setText(dataSnapshot.child("address").getValue().toString());
+                    city3.setText(dataSnapshot.child("city").getValue().toString());
+
+
+
+                }else
+                    Toast.makeText(getApplicationContext(), "No source to Display", Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
-        //go to delivery page,if want to remove details
-        btn_RemoveDel = (Button) findViewById(R.id.btn_PresConfirmDel);
-        btn_RemoveDel.setOnClickListener(new View.OnClickListener() {
+
+        btn_Change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DatabaseReference updRef = FirebaseDatabase.getInstance().getReference().child("Prescription Orders").
+                        child(Prevalent.currentonlineUser.getPhone());
+                final String saveCurrentdate,saveCurrentTime;
+                Calendar calendar = Calendar.getInstance();
+                final SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+                saveCurrentdate = currentDate.format(calendar.getTime());
 
-                openDeliRemoveDetails();
+                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+                saveCurrentTime = currentTime.format(calendar.getTime());
+
+                updRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+
+                        if(datasnapshot.hasChildren()){
+
+                            try {
+                                deliver.setName(name3.getText().toString().trim());
+                                deliver.setPhone(phone3.getText().toString().trim());
+                                deliver.setAddress(address3.getText().toString().trim());
+                                deliver.setCity(city3.getText().toString().trim());
+                                deliver.setDate(saveCurrentdate);
+                                deliver.setTime(saveCurrentTime);
+                                deliver.setState("not shipped");
+
+
+                                DatabaseReference delref = FirebaseDatabase.getInstance().getReference().child("Prescription Orders").
+                                        child(Prevalent.currentonlineUser.getPhone());
+
+
+                                delref.setValue(deliver);
+
+                                //Feedback to the user via a Toast
+                                Toast.makeText(getApplicationContext(),"Data Updated Successfully",Toast.LENGTH_SHORT).show();
+
+                            }catch (NumberFormatException e){
+                                Toast.makeText(getApplicationContext(),"Invalid Contact Number",Toast.LENGTH_SHORT).show();
+
+
+
+                            }
+
+
+
+
+                        }else
+
+                            Toast.makeText(getApplicationContext(),"No Source to Update", Toast.LENGTH_SHORT).show();
+
+
+                    }
+
+
+
+
+
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
             }
-        });*/
+        });
+
+
 
         //Alert
         Btn_dialog = findViewById(R.id.btn_confirm_alert);
@@ -62,7 +170,7 @@ public class ConfirmPrescri_order extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //close the activity when this button is clicked
-                       /* ConfirmPrescri_order.this.finish();*/
+                        ConfirmPrescri_order.this.finish();
 
 
                     }
@@ -75,21 +183,7 @@ public class ConfirmPrescri_order extends AppCompatActivity {
         });
 
     }
-/*    //go to delivery page,if want to change details
-    public void openDeliChangeDetails(){
-
-        Intent intent = new Intent(this,Prescri_Delivery.class);
-        startActivity(intent);
 
 
-    }
-    //go to delivery page,if want to remove details
-    public void openDeliRemoveDetails(){
-
-        Intent intent = new Intent(this,Prescri_Delivery.class);
-        startActivity(intent);
-
-
-    }*/
 
 }

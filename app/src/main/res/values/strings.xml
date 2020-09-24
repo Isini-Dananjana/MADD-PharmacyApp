@@ -124,6 +124,7 @@
     <string name="title_activity_main2">MainActivity</string>
     <string name="Quantity">Quantity</string>
     <string name="totItem">totItem</string>
+    <string name="getlocation">Get my location</string>
 
 
 </resources>

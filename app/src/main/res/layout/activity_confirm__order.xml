@@ -7,134 +7,118 @@
     android:background="#EDECEC"
     tools:context=".Confirm_Order">
 
-<RelativeLayout
-    android:id="@+id/rl11"
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:background="@color/colorPrimaryDark"
-    android:layout_alignParentTop="true"
-    android:layout_marginTop="10dp">
-
-    <view
-        android:id="@+id/viewDel"
-        class="androidx.viewpager.widget.ViewPager"
+    <com.rey.material.widget.RelativeLayout
+        android:id="@+id/relnew"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="#FFFFFF"
-         />
-
-    <Button
-        android:id="@+id/btn_chnge"
-        android:layout_width="90dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="false"
-        android:layout_marginStart="310dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="3dp"
-        android:background="@drawable/input_design"
-
-        android:fontFamily="sans-serif-black"
-        android:text="@string/chnge"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="15sp" />
-
-    <TextView
-        android:id="@+id/textView16"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="2dp"
-        android:layout_marginBottom="171dp"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/your"
-        android:textColor="#606060"
-        android:textSize="16sp" />
-
-    <TextView
-        android:id="@+id/city3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="6dp"
-
-        android:text="@string/kndy"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="17sp" />
-
-    <TextView
-        android:id="@+id/addr3"
-        android:layout_width="294dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="127dp"
-        android:layout_marginBottom="30dp"
-        android:text="@string/pera"
-        android:textColor="#000000"
-        android:textSize="17sp" />
-
-    <TextView
-        android:id="@+id/phone3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="82dp"
-        android:text="@string/numbrr"
-        android:textColor="#000000"
-        android:textSize="17sp" />
-
-    <TextView
-        android:id="@+id/name3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginStart="28dp"
-
-        android:layout_marginTop="40dp"
-        android:text="@string/pere"
-
-        android:textColor="#000000"
-        android:textSize="17sp" />
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="195dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/listDivider" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="25dp"
-        android:layout_height="27dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="152dp"
-        android:layout_marginTop="5dp"
-        app:srcCompat="@drawable/map" />
+        android:layout_height="429dp"
+        android:background="#FFFFFF">
 
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="196dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="199dp"
+            android:text="@string/your"
+            android:textColor="#474545"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/cart_list"
-        android:layout_width="410dp"
-        android:layout_height="230dp"
-        android:layout_above="@id/rel2"
-        android:layout_below="@+id/rl11"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="237dp" />
+        <Button
+            android:id="@+id/btn_Change"
+            android:layout_width="218dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="52dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="17dp"
+            android:background="@color/colorAccent1"
+            android:text="change"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/name3"
+            android:layout_width="362dp"
+            android:layout_height="45dp"
+            android:layout_alignLeft="@id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="89dp"
+            android:background="@drawable/input_design"
+            android:backgroundTint="#BADEE3"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/phone3"
+            android:layout_width="362dp"
+            android:layout_height="45dp"
+            android:layout_alignLeft="@id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="-1dp"
+            android:layout_marginTop="145dp"
+            android:background="@drawable/input_design"
+            android:backgroundTint="#BADEE3"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/address3"
+            android:layout_width="362dp"
+            android:layout_height="45dp"
+            android:layout_alignLeft="@id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginTop="200dp"
+            android:background="@drawable/input_design"
+            android:backgroundTint="#BADEE3"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/city3"
+            android:layout_width="362dp"
+            android:layout_height="45dp"
+            android:layout_alignLeft="@id/textView"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginLeft="-1dp"
+            android:layout_marginTop="258dp"
+            android:background="@drawable/input_design"
+            android:backgroundTint="#BADEE3"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="37dp"
+            android:layout_height="22dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="31dp"
+            android:layout_marginEnd="198dp"
+            app:srcCompat="@drawable/map" />
+
+    </com.rey.material.widget.RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rel2"
@@ -159,19 +143,21 @@
             android:fontFamily="sans-serif-medium"
             android:text="@string/pr_amount"
             android:textColor="#0E101E"
-            android:textSize="20sp"
-          />
+            android:textSize="19sp" />
+
         <TextView
             android:id="@+id/textView31"
             android:layout_width="wrap_content"
             android:layout_height="24dp"
 
-            android:layout_marginTop="60dp"
+            android:layout_alignStart="@id/view4"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="60dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/pr_delivery"
             android:textColor="#1C203C"
             android:textSize="18sp" />
+
         <TextView
             android:id="@+id/textView30"
             android:layout_width="wrap_content"
@@ -181,19 +167,19 @@
             android:fontFamily="sans-serif-medium"
             android:text="@string/pr_item"
             android:textColor="#1C203C"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
+
         <TextView
-            android:id="@+id/total_price"
+            android:id="@+id/total_price2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="300dp"
             android:layout_marginTop="24dp"
+            android:layout_marginEnd="10dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/tot"
             android:textColor="#1C203C"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/del"
@@ -201,22 +187,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="300dp"
             android:layout_marginTop="60dp"
+            android:layout_marginEnd="10dp"
             android:fontFamily="sans-serif-medium"
-            android:text="@string/del_pay"
             android:textColor="#1C203C"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
+
         <TextView
             android:id="@+id/tvTotAmountFin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="300dp"
+            android:layout_marginStart="290dp"
             android:layout_marginTop="109dp"
+            android:layout_marginEnd="10dp"
             android:fontFamily="sans-serif-medium"
-            android:text="@string/tot_amount"
             android:textColor="#1C203C"
-            android:textSize="18sp"
-            />
+            android:textSize="19sp" />
 
         <View
             android:id="@+id/divider"
@@ -225,8 +210,8 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
             android:layout_marginEnd="0dp"
-            android:layout_marginBottom="51dp"
-            android:background="@color/colorAccent1" />
+            android:layout_marginBottom="58dp"
+            android:background="?android:attr/listDivider" />
 
 
     </RelativeLayout>
@@ -246,6 +231,16 @@
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="-2dp"
+        android:layout_marginTop="430dp"
+        android:layout_marginBottom="-63dp"
+        android:background="?android:attr/listDivider" />
 
 
 </RelativeLayout>
