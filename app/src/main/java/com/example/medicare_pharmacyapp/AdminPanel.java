@@ -16,6 +16,7 @@ public class AdminPanel extends AppCompatActivity {
     private Button newOrder;
     private Button newprescrption;
     private Button logout;
+    private Button stock;
 
 
     @Override
@@ -61,6 +62,16 @@ public class AdminPanel extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(AdminPanel.this, newPrescriptions.class);
                 intent.putExtra("newPres","newprescription");
+                startActivity(intent);
+            }
+        });
+
+        stock = (Button)findViewById(R.id.btn_stock);
+        stock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminPanel.this, AdminStock.class);
+
                 startActivity(intent);
             }
         });
