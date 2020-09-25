@@ -230,7 +230,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         }
         else if (id == R.id.nav_feedback)
         {
-
+            Intent intent = new Intent(HomeActivity.this,FeedbackActivity.class);
+            startActivity(intent);
         }else if (id == R.id.nav_logout){
             Paper.book().destroy();
 

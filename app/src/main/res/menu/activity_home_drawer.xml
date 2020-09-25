@@ -11,14 +11,14 @@
             android:iconTint="@android:color/white"/>
         <item
             android:id="@+id/nav_search"
-            android:icon="@drawable/feedback"
+            android:icon="@drawable/search"
             android:title="Search"
             android:iconTint="@android:color/white"/>
 
         <item
             android:id="@+id/nav_feedback"
             android:icon="@drawable/feedback"
-            android:title="Categories"
+            android:title="@string/feedback_form"
             android:iconTint="@android:color/white"/>
         <item
             android:id="@+id/nav_settings"
