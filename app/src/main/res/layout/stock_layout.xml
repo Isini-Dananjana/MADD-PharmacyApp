@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:backgroundTint="@color/cardview_light_background"
+    app:cardElevation="5dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="144dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="?attr/colorControlActivated"
+        android:backgroundTint="@color/cardview_light_background"
+        android:padding="3dp">
+
+        <TextView
+            android:id="@+id/product_name"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/order_phone_number"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="Name"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorText"
+            android:textColorHighlight="@color/colorText"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:id="@+id/product_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/product_name"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Price"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorText"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/product_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/product_price"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Qunatity"
+            android:textAlignment="viewStart"
+            android:textColor="@color/design_default_color_error"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/Stock_date_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/product_quantity"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="Date, Time"
+            android:textAlignment="viewStart"
+            android:textColor="@color/colorText"
+            android:textColorHighlight="@color/cardview_light_background"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/edit_stock_btn"
+            android:layout_width="42dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="86dp"
+            android:background="@android:drawable/ic_menu_edit" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

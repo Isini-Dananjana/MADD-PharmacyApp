@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchProductsActivity"></activity>
+        <activity android:name=".SendMessage"></activity>
         <activity android:name=".Checkout_ItemsLayout" />
         <activity android:name=".ConfirmPrescri_order" />
         <activity android:name=".HomeActivity" />
@@ -41,9 +42,6 @@
             android:name=".newPrescriptions"
             android:label="New Prescriptions" />
         <activity
-            android:name=".ViewPrescriptions"
-            android:label="New Prescriptions" />
-        <activity
             android:name=".adminNewOrederItems"
             android:label="Order Items" />
         <activity
@@ -55,6 +53,15 @@
         <activity android:name=".AddCategory" />
         <activity android:name=".AdminPanel" />
         <activity android:name=".AddItem" />
+        <activity
+            android:name=".AdminStock"
+            android:label="Stock" />
+        <activity
+            android:name=".Check_Stock"
+            android:label="Stock list" />
+        <activity
+            android:name=".editStock"
+            android:label="Edit Stock" />
     </application>
 
 </manifest>

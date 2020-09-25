@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:drawable/screen_background_light_transparent"
+    android:background="@drawable/ee"
     tools:context=".AdminPanel">
 
     <TextView
@@ -25,8 +25,9 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/adminPanel"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginTop="45dp"
+        android:layout_marginTop="21dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/input_design"
@@ -34,7 +35,6 @@
         android:textAllCaps="false"
         android:textColor="@android:color/secondary_text_light"
         android:textSize="20sp" />
-
 
     <Button
         android:id="@+id/MangeItems_btn"
@@ -101,9 +101,10 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="49dp"
         android:background="@color/colorPrimaryDark"
         android:text="@string/lgOut"
         android:textAllCaps="false"
