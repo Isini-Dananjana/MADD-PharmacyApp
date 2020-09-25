@@ -6,38 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".Check_Stock">
 
+
     <RelativeLayout
         android:id="@+id/rel"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/colorPrimaryDark"
-        android:layout_alignParentTop="true">
+        android:layout_height="66dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="0dp"
+        android:background="@color/colorAccent">
+
+        <EditText
+            android:id="@+id/search_product"
+            android:layout_width="318dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/white"
+            android:hint="Product Name"
+            android:padding="9dp"
+            android:textColorHint="@color/colorPrimaryDark"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/search_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="3dp"
+            android:layout_marginBottom="13dp"
+            android:layout_toRightOf="@+id/search_product"
+            android:background="@color/colorPrimaryDark"
+            android:padding="9dp"
+            android:text="Search"
+            android:textColor="@android:color/white"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/total_price"
+            android:layout_width="265dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="0dp"
+            android:text="Stock List"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
 
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/stock_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="652dp"
+        android:layout_above="@+id/next"
         android:layout_below="@+id/rel"
-        android:layout_above="@+id/next">
-
-
-
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="1dp">
 
 
     </androidx.recyclerview.widget.RecyclerView>
-
-    <TextView
-        android:id="@+id/total_price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="0dp"
-        android:text="Stock List"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="20dp" />
 
 
 </RelativeLayout>
