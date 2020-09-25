@@ -99,7 +99,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-   // implementation  'com.github.YuganshT79:Smiley-Rating:1.0.2'
+   //implementation  'com.github.YuganshT79:Smiley-Rating:1.0.2'
 
     implementation 'com.github.sujithkanna:smileyrating:2.0.0'
 }

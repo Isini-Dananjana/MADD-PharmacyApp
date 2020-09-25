@@ -79,22 +79,36 @@ public class Delivery extends AppCompatActivity {
         City=city2.getText().toString();
 
 
+        if (Cname.length()==0)
+        {
+            name2.requestFocus();
+            name2.setError("Name cannot be empty!");
+        }
 
-        if(TextUtils.isEmpty(Cname))
+        else if(!Cname.matches("[a-zA-Z ]+")  )
         {
-            Toast.makeText(this,"Please provide your full name.. ",Toast.LENGTH_SHORT);
+            /*Toast.makeText(this,"Please provide your full name.. ",Toast.LENGTH_SHORT);*/
+            name2.requestFocus();
+            name2.setError("Enter only alphabetical character!");
         }
-        else if(TextUtils.isEmpty(PhoneNo))
+        else if(PhoneNo.matches("^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$"))
         {
-            Toast.makeText(this,"Please provide your phone number.. ",Toast.LENGTH_SHORT);
+            phone2.requestFocus();
+            phone2.setError("Enter only numbers!");
+        }else if (PhoneNo.length()==0)
+        {
+            phone2.requestFocus();
+            phone2.setError("Phone number cannot be empty!");
         }
-        else if(TextUtils.isEmpty(Address))
+        else if(Address.length()==0)
         {
-            Toast.makeText(this,"Please provide your address.. ",Toast.LENGTH_SHORT);
+            addr2.requestFocus();
+            addr2.setError("Address cannot be empty!");
         }
-        else if(TextUtils.isEmpty(City))
+        else if(City.length()==0)
         {
-            Toast.makeText(this,"Please provide your city name.. ",Toast.LENGTH_SHORT);
+            city2.requestFocus();
+            city2.setError("City cannot be empty!");
         }
         else
         {
@@ -104,6 +118,7 @@ public class Delivery extends AppCompatActivity {
 
     private void ConfirmOrder()
     {
+
         final String saveCurrentdate,saveCurrentTime;
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
