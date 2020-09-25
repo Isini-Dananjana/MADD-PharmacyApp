@@ -3,6 +3,7 @@ package com.example.medicare_pharmacyapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.medicare_pharmacyapp.Model.DeliveryModel;
 import com.example.medicare_pharmacyapp.Prevalent.Prevalent;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,21 +27,26 @@ import java.util.HashMap;
 
 public class Delivery extends AppCompatActivity {
 
+    DeliveryModel deliver;
     private Button btn_DelConfirm;
     private EditText name2,phone2,addr2,city2;
     private String Cname , PhoneNo,Address, City;
     private String DeliveryRandomKey;
     private DatabaseReference DeliveryRef;
     private ProgressDialog loadingBar;
-    private String totalAmount = "";
+    private String totalAmount = " ";
+    private String delTot = " ";
+    private String finalTot = "";
 
+    @SuppressLint("ShowToast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_delivery);
 
-  /*      totalAmount = getIntent().getStringExtra("Total Price");
-        Toast.makeText(this,"Total Price = "+totalAmount+"LKR",Toast.LENGTH_SHORT);*/
+        totalAmount = getIntent().getStringExtra("Total Price");
+        Toast.makeText(this,"Total Price = "+totalAmount+"LKR",Toast.LENGTH_SHORT);
+
 
 
         btn_DelConfirm = (Button) findViewById(R.id.btn_confirmDel);
@@ -57,16 +64,11 @@ public class Delivery extends AppCompatActivity {
             }
         });
 
-   /*     btn_DelConfirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(Delivery.this, Confirm_Order.class);
-                startActivity(i);
-            }
-        });
-*/
+
 
     }
+
+
 
 
     private void Check()
@@ -102,7 +104,7 @@ public class Delivery extends AppCompatActivity {
 
     private void ConfirmOrder()
     {
-       final String saveCurrentdate,saveCurrentTime;
+        final String saveCurrentdate,saveCurrentTime;
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
         saveCurrentdate = currentDate.format(calendar.getTime());
@@ -114,6 +116,7 @@ public class Delivery extends AppCompatActivity {
                 child(Prevalent.currentonlineUser.getPhone());
         HashMap<String,Object> ordersMap = new HashMap<>();
 
+
         ordersMap.put("totalAmount", totalAmount);
         ordersMap.put("name", name2.getText().toString());
         ordersMap.put("phone", phone2.getText().toString());
@@ -122,6 +125,7 @@ public class Delivery extends AppCompatActivity {
         ordersMap.put("date", saveCurrentdate);
         ordersMap.put("time", saveCurrentTime);
         ordersMap.put("state","not shipped");
+
 
 
         ordersRef.updateChildren(ordersMap).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -140,7 +144,7 @@ public class Delivery extends AppCompatActivity {
                             {
                                 Toast.makeText(Delivery.this,"Your final order has placed successful..",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(Delivery.this,Confirm_Order.class);
-                               intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);
                                 finish();
                             }

@@ -173,7 +173,7 @@ public class Prescri_Delivery extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
             {
-                Toast.makeText(Prescri_Delivery.this, "Prescription uploaded Successfully...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Prescri_Delivery.this, "Prescription uploaded Successfully..", Toast.LENGTH_SHORT).show();
 
                 Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
@@ -240,8 +240,8 @@ public class Prescri_Delivery extends AppCompatActivity {
             {
                 if(task.isSuccessful())
                 {
-                    Toast.makeText(Prescri_Delivery.this,"Your final order has placed successful..",Toast.LENGTH_SHORT).show();
-                    Intent intent =new  Intent(Prescri_Delivery.this,HomeActivity.class);
+
+                    Intent intent =new  Intent(Prescri_Delivery.this,ConfirmPrescri_order.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();

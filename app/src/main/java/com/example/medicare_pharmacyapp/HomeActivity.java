@@ -89,14 +89,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         //cart button
         FloatingActionButton fab = findViewById(R.id.fab);
-       fab.setOnClickListener(new View.OnClickListener() {
-         @Override
-           public void onClick(View view) {
-             Intent intent = new Intent(HomeActivity.this,My_Cart.class);
-             startActivity(intent);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this,My_Cart.class);
+                startActivity(intent);
 
             }
-       });
+        });
 //        DrawerLayout drawer = findViewById(R.id.drawer_layout);
 //        NavigationView navigationView = findViewById(R.id.nav_view);
 //        // Passing each menu ID as a set of Ids because each
@@ -119,14 +119,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
 
-            userNameTextView.setText(Prevalent.currentonlineUser.getName());
-            Picasso.get().load(Prevalent.currentonlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        userNameTextView.setText(Prevalent.currentonlineUser.getName());
+        Picasso.get().load(Prevalent.currentonlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
 
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
-    layoutManager = new LinearLayoutManager(this);
+        layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-}
+    }
 
 
     @Override
@@ -243,5 +243,3 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 }
-
-

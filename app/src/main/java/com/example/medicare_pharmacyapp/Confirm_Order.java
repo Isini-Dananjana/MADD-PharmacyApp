@@ -3,59 +3,224 @@ package com.example.medicare_pharmacyapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.medicare_pharmacyapp.Model.Cart;
+import com.example.medicare_pharmacyapp.Model.DeliveryModel;
 import com.example.medicare_pharmacyapp.Prevalent.Prevalent;
-import com.example.medicare_pharmacyapp.ViewHolder.CartViewHolder;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 public class Confirm_Order extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private  RecyclerView.LayoutManager layoutManager;
-    private TextView total_price;
-    private DatabaseReference DeliveryRef;
+
+    DeliveryModel deliver;
+    private TextView  txttotal_price2,txttvTotAmountFin,txtdel;
+    private DatabaseReference ordersRef;
+    private DataSnapshot dataSnapshot;
     Button Btn_dialog ;
     private Button btn_Change;
-    private Button btn_Remove;
+
+    private String totalAmount = " ";
+
+    private EditText name3, phone3, address3, city3;
+    private int deliveryTot   ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirm__order);
 
-        recyclerView = findViewById(R.id.cart_list);
-        recyclerView.setHasFixedSize(true);
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        totalAmount = getIntent().getStringExtra("Total Price");
+        Toast.makeText(this,"Total Price = "+totalAmount+"LKR",Toast.LENGTH_SHORT);
 
 
-        total_price = (TextView)findViewById(R.id.total_price) ;
+        txttotal_price2 = (TextView)findViewById(R.id.total_price2) ;
+        //edit text
+        name3 = findViewById(R.id.name3);
+        phone3 = findViewById(R.id.phone3);
+        address3 = findViewById(R.id.address3);
+        city3 = findViewById(R.id.city3);
+        txtdel = findViewById(R.id.del);
+        txttvTotAmountFin = findViewById(R.id.tvTotAmountFin);
+        btn_Change = findViewById(R.id.btn_Change);
+        deliver = new DeliveryModel();
 
 
-        btn_Change = findViewById(R.id.btn_chnge);
- /*       btn_Change.setOnClickListener(new View.OnClickListener() {
+          final DatabaseReference ordersRef =  FirebaseDatabase.getInstance().getReference().child("Orders").
+                child(Prevalent.currentonlineUser.getPhone());
+
+
+         ordersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+             @Override
+             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                 if(dataSnapshot.hasChildren()){
+                     name3.setText(dataSnapshot.child("name").getValue().toString());
+                     phone3.setText(dataSnapshot.child("phone").getValue().toString());
+                     address3.setText(dataSnapshot.child("address").getValue().toString());
+                     city3.setText(dataSnapshot.child("city").getValue().toString());
+
+                     if(dataSnapshot.child("city").getValue().toString().equals("Kandy" ) || dataSnapshot.child("city").getValue().toString().equals("kandy") ){
+
+                         int del = 150;
+
+                         int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
+
+                         txttotal_price2.setText("LKR"+dataSnapshot.child("totalAmount").getValue().toString());
+                         txtdel.setText("LKR"+Integer.toString(del));
+                         txttvTotAmountFin.setText("LKR"+Integer.toString(tot));
+
+                     }else if (dataSnapshot.child("city").getValue().toString().equals("Matale" ) || dataSnapshot.child("city").getValue().toString().equals("matale") ) {
+
+                         int del = 250;
+
+                         int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
+
+                         txttotal_price2.setText("LKR"+dataSnapshot.child("totalAmount").getValue().toString());
+                         txtdel.setText("LKR"+Integer.toString(del));
+                         txttvTotAmountFin.setText("LKR"+Integer.toString(tot));
+
+
+                     }else if (dataSnapshot.child("city").getValue().toString().equals("Kurunegala" ) || dataSnapshot.child("city").getValue().toString().equals("kurunegala") ) {
+
+                         int del = 300;
+
+                         int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
+
+                         txttotal_price2.setText("LKR"+dataSnapshot.child("totalAmount").getValue().toString());
+                         txtdel.setText("LKR"+Integer.toString(del));
+                         txttvTotAmountFin.setText("LKR"+Integer.toString(tot));
+
+
+                     }else if (dataSnapshot.child("city").getValue().toString().equals("Kegalle" ) || dataSnapshot.child("city").getValue().toString().equals("kegalle") ) {
+
+                         int del = 270;
+
+                         int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
+
+                         txttotal_price2.setText("LKR" + dataSnapshot.child("totalAmount").getValue().toString());
+                         txtdel.setText("LKR" + Integer.toString(del));
+                         txttvTotAmountFin.setText("LKR" + Integer.toString(tot));
+
+
+                     }else {
+
+                         int del = 400;
+
+                         int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
+
+                         txttotal_price2.setText("LKR" + dataSnapshot.child("totalAmount").getValue().toString());
+                         txtdel.setText("LKR" + Integer.toString(del));
+                         txttvTotAmountFin.setText("LKR" + Integer.toString(tot));
+
+
+                     }
+
+
+
+
+                         //                     txttotal_price2.setText("LKR"+dataSnapshot.child("totalAmount").getValue().toString());
+//                     txtdel.setText("LKR"+dataSnapshot.child("deliveryTot").getValue().toString());
+//                     txttvTotAmountFin.setText("LKR"+dataSnapshot.child("finalTot").getValue().toString());
+
+
+
+
+                 }else
+                     Toast.makeText(getApplicationContext(), "No source to Display", Toast.LENGTH_SHORT).show();
+
+             }
+
+             @Override
+             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+             }
+         });
+
+        btn_Change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Confirm_Order.this,EditDelivery.class);
-                startActivity(intent);
+                DatabaseReference updRef = FirebaseDatabase.getInstance().getReference().child("Orders").
+                        child(Prevalent.currentonlineUser.getPhone());
+                final String saveCurrentdate,saveCurrentTime;
+                Calendar calendar = Calendar.getInstance();
+                final SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
+                saveCurrentdate = currentDate.format(calendar.getTime());
+
+                SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
+                saveCurrentTime = currentTime.format(calendar.getTime());
+
+                updRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot datasnapshot) {
+
+                        if(datasnapshot.hasChildren()){
+
+                            try {
+                                deliver.setName(name3.getText().toString().trim());
+                                deliver.setPhone(phone3.getText().toString().trim());
+                                deliver.setAddress(address3.getText().toString().trim());
+                                deliver.setCity(city3.getText().toString().trim());
+                                deliver.setTotalAmount(txttotal_price2.getText().toString().trim());
+                                deliver.setDate(saveCurrentdate);
+                                deliver.setTime(saveCurrentTime);
+                                deliver.setState("not shipped");
+                               /* deliver.setDeliveryTot(txtdel.getText().toString().trim());
+                                deliver.setFinalTot(txttvTotAmountFin.getText().toString().trim());
+*/
+
+                                DatabaseReference delref = FirebaseDatabase.getInstance().getReference().child("Orders").
+                                        child(Prevalent.currentonlineUser.getPhone());
+
+
+                                delref.setValue(deliver);
+
+                                //Feedback to the user via a Toast
+                                Toast.makeText(getApplicationContext(),"Data Updated Successfully",Toast.LENGTH_SHORT).show();
+
+                            }catch (NumberFormatException e){
+                                Toast.makeText(getApplicationContext(),"Invalid Contact Number",Toast.LENGTH_SHORT).show();
+
+
+
+                            }
+
+
+
+
+                        }else
+
+                            Toast.makeText(getApplicationContext(),"No Source to Update", Toast.LENGTH_SHORT).show();
+
+
+                    }
+
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
 
             }
         });
-*/
+
+
         //Alert
         Btn_dialog = findViewById(R.id.btn_confirm_alert);
         Btn_dialog.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +242,7 @@ public class Confirm_Order extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //close the activity when this button is clicked
-                        /*Confirm_Order.this.finish();*/
+                        Confirm_Order.this.finish();
                     }
                 });
                 //create alert dialog
@@ -87,40 +252,13 @@ public class Confirm_Order extends AppCompatActivity {
             }
         });
 
+
+
+
+
+
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-        final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
-        FirebaseRecyclerOptions<Cart> options =
-                new FirebaseRecyclerOptions.Builder<Cart>()
-                        .setQuery(cartListRef.child("User View")
-                                .child(Prevalent.currentonlineUser.getPhone()).child("products"), Cart.class).build();
-
-        FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter
-                = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
-            @Override
-            protected void onBindViewHolder(@NonNull CartViewHolder cartViewHolder, int i, @NonNull Cart cart) {
-                cartViewHolder.txtProductQuantity.setText("Quantity = "+cart.getQuantity());
-                cartViewHolder.txtProductPrice.setText("Item Price = "+cart.getPrice()+"LKR");
-                cartViewHolder.txtProductName.setText("Item Name = "+cart.getPName());
-
-            }
-
-            @NonNull
-            @Override
-            public CartViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_items_layout, parent, false);
-                CartViewHolder holder = new CartViewHolder(view);
-                return holder;
-            }
-        };
-
-        recyclerView.setAdapter(adapter);
-        adapter.startListening();
-    }
 
 }

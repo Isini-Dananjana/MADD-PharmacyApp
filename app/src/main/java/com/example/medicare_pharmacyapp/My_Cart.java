@@ -32,12 +32,12 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class My_Cart extends AppCompatActivity {
 
-   private RecyclerView recyclerView;
-   private RecyclerView.LayoutManager layoutManager;
-   private Button Next;
-   private TextView totAmount;
+    private RecyclerView recyclerView;
+    private RecyclerView.LayoutManager layoutManager;
+    private Button Next;
+    private TextView totAmount;
 
-   private int totPrice=0;
+    private int totPrice=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,8 +83,8 @@ public class My_Cart extends AppCompatActivity {
         final DatabaseReference cartListRef = FirebaseDatabase.getInstance().getReference().child("Cart List");
         FirebaseRecyclerOptions<Cart> options =
                 new FirebaseRecyclerOptions.Builder<Cart>()
-               .setQuery(cartListRef.child("User View")
-               .child(Prevalent.currentonlineUser.getPhone()).child("products"), Cart.class).build();
+                        .setQuery(cartListRef.child("User View")
+                                .child(Prevalent.currentonlineUser.getPhone()).child("products"), Cart.class).build();
 
         FirebaseRecyclerAdapter<Cart, CartViewHolder> adapter
                 = new FirebaseRecyclerAdapter<Cart, CartViewHolder>(options) {
