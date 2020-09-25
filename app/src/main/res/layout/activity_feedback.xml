@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CADEE1"
+    tools:context=".FeedbackActivity"
+
+    >
+
+    <com.hsalf.smilerating.SmileRating
+        android:id="@+id/ratingView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="121dp"
+        app:isIndicator="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.188" />
+
+    <TextView
+        android:id="@+id/feeling"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:text="@string/Feelings"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/ratingView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <EditText
+        android:id="@+id/review_box"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_below="@+id/ratingView"
+        android:layout_margin="24dp"
+        android:layout_marginTop="84dp"
+        android:layout_marginBottom="319dp"
+        android:autofillHints=""
+        android:hint="@string/write_your_review"
+        android:inputType="text"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ratingView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="164dp"
+        android:text="@string/submit_feedback"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/review_box"
+        app:layout_constraintVertical_bias="0.0"
+        android:background="@drawable/input_design"
+        />
+
+
+    <!-- <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <dev.yuganshtyagi.smileyrating.SmileyRatingView
+            android:id="@+id/smiley_view"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_centerHorizontal="true"
+            app:default_rating="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/smiley_view"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:text="Rate your Experience"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp" />
+
+        <RatingBar
+            android:id="@+id/rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/smiley_view"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:numStars="4"
+            android:rating="1"
+            android:stepSize="1"
+            android:theme="@style/RatingBar" />
+
+        <EditText
+            android:id="@+id/review_box"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_below="@id/rating_bar"
+            android:layout_margin="24dp"
+            android:background="@drawable/rounded_bg"
+            android:hint="Write your Review"
+            android:padding="12dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/review_box"
+            android:layout_margin="24dp"
+            android:background="@color/colorPrimary"
+            android:elevation="4dp"
+            android:text="Submit" />
+
+    </RelativeLayout>-->
+</androidx.constraintlayout.widget.ConstraintLayout>
