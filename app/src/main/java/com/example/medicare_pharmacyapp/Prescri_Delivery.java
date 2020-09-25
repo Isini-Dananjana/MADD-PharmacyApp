@@ -173,7 +173,7 @@ public class Prescri_Delivery extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
             {
-                Toast.makeText(Prescri_Delivery.this, "Prescription uploaded Successfully...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Prescri_Delivery.this, "Prescription uploaded Successfully..", Toast.LENGTH_SHORT).show();
 
                 Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override

@@ -142,7 +142,7 @@ public class Delivery extends AppCompatActivity {
                         {
                             if(task.isSuccessful())
                             {
-                                /*Toast.makeText(Delivery.this,"Your final order has placed successful..",Toast.LENGTH_SHORT).show();*/
+                                Toast.makeText(Delivery.this,"Your final order has placed successful..",Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(Delivery.this,Confirm_Order.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK| Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intent);

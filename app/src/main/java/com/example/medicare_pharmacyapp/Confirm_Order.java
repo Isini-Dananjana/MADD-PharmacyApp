@@ -253,30 +253,12 @@ public class Confirm_Order extends AppCompatActivity {
         });
 
 
-     /*      DeliveryCal();*/
+
 
 
 
     }
 
-/*
-    private void DeliveryCal(){
 
-        if(deliver.getCity() == "Kandy"){
-
-            deliveryTot = 200 ;
-        }
-        else if(deliver.getCity() == "Matale"){
-
-            deliveryTot = 400 ;
-
-
-        }else{
-
-
-            deliveryTot= 500 ;
-        }
-
-    }*/
 
 }
