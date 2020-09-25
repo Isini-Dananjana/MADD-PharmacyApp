@@ -124,6 +124,9 @@
     <string name="title_activity_main2">MainActivity</string>
     <string name="Quantity">Quantity</string>
     <string name="totItem">totItem</string>
+    <string name="Feelings">How do you feel about the app</string>
+    <string name="write_your_review">write your review</string>
+    <string name="submit_feedback">submit feedback</string>
 
 
 </resources>
