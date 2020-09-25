@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.medicare_pharmacyapp.Model.Pres_Delivery;
@@ -26,6 +27,7 @@ import java.util.Calendar;
 
 public class ConfirmPrescri_order extends AppCompatActivity {
 
+    ImageView imgPresc11 ;
     Pres_Delivery deliver;
     Button Btn_dialog ;
     private DatabaseReference ordersRef;
@@ -49,6 +51,8 @@ public class ConfirmPrescri_order extends AppCompatActivity {
 
         btn_Change = findViewById(R.id.btn_Change);
         deliver = new Pres_Delivery();
+
+
 
         DatabaseReference ordersRef =  FirebaseDatabase.getInstance().getReference().child("Prescription Orders").
                 child(Prevalent.currentonlineUser.getPhone());

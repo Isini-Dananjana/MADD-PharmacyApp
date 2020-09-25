@@ -119,23 +119,36 @@ public class Prescri_Delivery extends AppCompatActivity {
 
         if (ImageUri == null)
         {
-            Toast.makeText(this, "Please upload your prescription...", Toast.LENGTH_SHORT).show();
-        }
-        else if (TextUtils.isEmpty(Cname))
+            Toast.makeText(this, "Please upload your prescription..", Toast.LENGTH_SHORT).show();
+        }else if (Cname.length()==0)
         {
-            Toast.makeText(this, "Please provide your name...", Toast.LENGTH_SHORT).show();
+            name1.requestFocus();
+            name1.setError("Name cannot be empty!");
         }
-        else if (TextUtils.isEmpty(PhoneNo))
+        else if(!Cname.matches("[a-zA-Z ]+")  )
         {
-            Toast.makeText(this, "Please enter your phone no...", Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(this,"Please provide your full name.. ",Toast.LENGTH_SHORT);*/
+            name1.requestFocus();
+            name1.setError("Enter only alphabetical character!");
         }
-        else if (TextUtils.isEmpty(Address))
+        else if(PhoneNo.matches("^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$"))
         {
-            Toast.makeText(this, "Please enter your address...", Toast.LENGTH_SHORT).show();
+            phone1.requestFocus();
+            phone1.setError("Enter only numbers!");
+        }else if (PhoneNo.length()==0)
+        {
+            phone1.requestFocus();
+            phone1.setError("Phone number cannot be empty!");
         }
-        else if (TextUtils.isEmpty(City))
+        else if(Address.length()==0)
         {
-            Toast.makeText(this, "Please enter your city...", Toast.LENGTH_SHORT).show();
+            addr1.requestFocus();
+            addr1.setError("Address cannot be empty!");
+        }
+        else if(City.length()==0)
+        {
+            city1.requestFocus();
+            city1.setError("City cannot be empty!");
         }
         else
         {
