@@ -123,6 +123,22 @@ public class AdminStock extends AppCompatActivity {
         {
             Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();
         }
+
+         else if ((pName.length()) > 10)
+         {
+             inputProductNme.setError("Cannot enter more than 10 words for product name");
+         }
+
+         else if(!qunatity.matches("[0-9]+"))
+         {
+             inputProductQuan.setError("PLEASE ENTER A NUMERICAL VALUE");
+         }
+
+         else if(!price.matches("[0-9]+"))
+         {
+             inputProductPri.requestFocus();
+             inputProductPri.setError("PLEASE ENTER A NUMERICAL VALUE ");
+         }
         else
         {
             StoreProductInformation();
