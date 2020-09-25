@@ -7,6 +7,7 @@
     android:backgroundTint="@color/cardview_light_background"
     app:cardElevation="15dp">
 
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +16,7 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         android:background="?attr/colorControlActivated"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
         android:padding="10dp">
 
         <TextView
@@ -24,8 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="User Name"
-            android:textColor="@color/cardview_light_background"
-            android:textSize="14dp"
+            android:textColor="@color/colorText"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
         <TextView
@@ -39,8 +40,8 @@
             android:gravity="end"
             android:text="Phone Number"
             android:textAlignment="viewEnd"
-            android:textColor="@color/cardview_light_background"
-            android:textSize="14dp"
+            android:textColor="@color/design_default_color_error"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <TextView
@@ -51,7 +52,7 @@
             android:layout_marginTop="25dp"
             android:gravity="center"
             android:text="Total Price"
-            android:textColor="@color/design_default_color_background"
+            android:textColor="@color/common_google_signin_btn_text_light_pressed"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -63,7 +64,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="Address, City"
-            android:textColor="@color/cardview_light_background"
+            android:textColor="@color/cardview_dark_background"
             android:textSize="14dp"
             android:textStyle="bold" />
 
@@ -75,7 +76,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="Date, Time"
-            android:textColor="@color/cardview_light_background"
+            android:textColor="@color/cardview_dark_background"
             android:textColorHighlight="@color/cardview_light_background"
             android:textSize="14dp"
             android:textStyle="bold" />
@@ -88,10 +89,10 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="19dp"
             android:layout_marginRight="20dp"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimaryDark"
             android:text="Show this Order Products"
             android:textAllCaps="false"
-            android:textColor="@color/colorPrimaryDark"
+            android:textColor="@color/colorText"
             android:textSize="18dp" />
 
 

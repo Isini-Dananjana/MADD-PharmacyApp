@@ -25,6 +25,8 @@ public class admin_newOrders extends AppCompatActivity {
 
     private RecyclerView ordersList;
     private DatabaseReference ordersRef;
+    Button stockItems;
+    private TextView getTextPhone;
 
 
     @Override
@@ -36,8 +38,22 @@ public class admin_newOrders extends AppCompatActivity {
         ordersList = findViewById(R.id.orders_list);
 
         ordersList.setLayoutManager(new LinearLayoutManager(this));
+        stockItems = findViewById(R.id.btn_stock_items);
+
+
+        stockItems.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(admin_newOrders.this, Check_Stock.class);
+
+                startActivity(intent);
+            }
+        });
 
     }
+
+
 
     @Override
     protected void onStart() {
@@ -66,6 +82,19 @@ public class admin_newOrders extends AppCompatActivity {
                                 String uID = getRef(option).getKey();
 
                                 Intent intent = new Intent(admin_newOrders.this, adminNewOrederItems.class);
+                                intent.putExtra("uid", uID);
+                                startActivity(intent);
+
+                            }
+                        });
+
+                        adminOrdersViewHolder.userPhoneNumber.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                String uID = getRef(option).getKey();
+
+                                Intent intent = new Intent(admin_newOrders.this, SendMessage.class);
                                 intent.putExtra("uid", uID);
                                 startActivity(intent);
 
