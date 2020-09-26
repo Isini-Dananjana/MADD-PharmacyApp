@@ -17,6 +17,7 @@ public class AdminPanel extends AppCompatActivity {
     private Button newprescrption;
     private Button logout;
     private Button stock;
+    private Button feedback;
 
 
     @Override
@@ -89,7 +90,18 @@ public class AdminPanel extends AppCompatActivity {
             }
         });
 
+        feedback = (Button)findViewById(R.id.btn_feedback);
+        feedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Paper.book().destroy();
 
+                Intent intent = new Intent(AdminPanel.this,AdminFeedback.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 }

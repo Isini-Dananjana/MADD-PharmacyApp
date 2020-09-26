@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         final Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        if(bundle != null) {
+        if (bundle != null) {
             type = getIntent().getExtras().get("Admin").toString();
         }
         ProductsRef = FirebaseDatabase.getInstance().getReference().child("products");
@@ -72,16 +72,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         setSupportActionBar(toolbar);
 
 
-
-
-
-
         //prescription button
         upload_prescription = (Button) findViewById(R.id.upload_prescription);
         upload_prescription.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this,Prescri_Delivery.class);
+                Intent intent = new Intent(HomeActivity.this, Prescri_Delivery.class);
                 startActivity(intent);
 
             }
@@ -92,7 +88,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this,My_Cart.class);
+                Intent intent = new Intent(HomeActivity.this, My_Cart.class);
                 startActivity(intent);
 
             }
@@ -110,7 +106,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //        NavigationUI.setupWithNavController(navigationView, navController);
 
 
-
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -118,10 +113,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         TextView userNameTextView = headerView.findViewById(R.id.user_profile_name);
         CircleImageView profileImageView = headerView.findViewById(R.id.user_profile_image);
 
-
-        userNameTextView.setText(Prevalent.currentonlineUser.getName());
-        Picasso.get().load(Prevalent.currentonlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
-
+        if (!type.equals("admin")) {
+            userNameTextView.setText(Prevalent.currentonlineUser.getName());
+            Picasso.get().load(Prevalent.currentonlineUser.getImage()).placeholder(R.drawable.profile).into(profileImageView);
+        }
         recyclerView = findViewById(R.id.recycler_menu);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
@@ -212,33 +207,40 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.nav_cart)
         {
-            Intent intent = new Intent(HomeActivity.this,My_Cart.class);
-            startActivity(intent);
-
+            if (!type.equals("admin")) {
+                Intent intent = new Intent(HomeActivity.this, My_Cart.class);
+                startActivity(intent);
+            }
         }
         else if (id == R.id.nav_search)
         {
-
-            Intent intent = new Intent(HomeActivity.this,SearchProductsActivity.class);
-            startActivity(intent);
-
+            if (!type.equals("admin")) {
+                Intent intent = new Intent(HomeActivity.this, SearchProductsActivity.class);
+                startActivity(intent);
+            }
         }
         else if (id == R.id.nav_settings)
         {
-            Intent intent = new Intent(HomeActivity.this,SettingActiviy.class);
-            startActivity(intent);
+            if (!type.equals("admin")) {
+                Intent intent = new Intent(HomeActivity.this, SettingActiviy.class);
+                startActivity(intent);
+            }
         }
         else if (id == R.id.nav_feedback)
         {
-            Intent intent = new Intent(HomeActivity.this,FeedbackActivity.class);
-            startActivity(intent);
+            if (!type.equals("admin")) {
+                Intent intent = new Intent(HomeActivity.this, FeedbackActivity.class);
+                startActivity(intent);
+            }
         }else if (id == R.id.nav_logout){
-            Paper.book().destroy();
+            if (!type.equals("admin")) {
+                Paper.book().destroy();
 
-            Intent intent = new Intent(HomeActivity.this,Login_signupActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
+                Intent intent = new Intent(HomeActivity.this, Login_signupActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            }
         }
         return true;
     }

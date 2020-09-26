@@ -131,14 +131,15 @@ public class Prescri_Delivery extends AppCompatActivity {
             name1.requestFocus();
             name1.setError("Enter only alphabetical character!");
         }
-        else if(PhoneNo.matches("^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{4})(?: *x(\\d+))?\\s*$"))
-        {
-            phone1.requestFocus();
-            phone1.setError("Enter only numbers!");
-        }else if (PhoneNo.length()==0)
+        else if (PhoneNo.length()==0)
         {
             phone1.requestFocus();
             phone1.setError("Phone number cannot be empty!");
+        }
+        else if(PhoneNo.length()<10 || PhoneNo.length()>10)
+        {
+            phone1.requestFocus();
+            phone1.setError("Enter valid Phone number!");
         }
         else if(Address.length()==0)
         {

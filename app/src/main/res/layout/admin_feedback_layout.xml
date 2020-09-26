@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginEnd="15dp"
+    app:cardElevation="15dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/Afeedback_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/phone_number"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:id="@+id/Afeedback_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Afeedback_phone"
+            android:text="date"
+            android:textAlignment="center"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
+
+
+
+        <TextView
+            android:id="@+id/Afeedback_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Afeedback_date"
+            android:layout_marginTop="2dp"
+            android:text="time"
+            android:textAlignment="center"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/Afeedback_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Afeedback_time"
+            android:layout_marginTop="2dp"
+            android:text="rating"
+            android:textAlignment="center"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
+        <TextView
+            android:id="@+id/Afeedback_"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Afeedback_rating"
+            android:layout_marginTop="2dp"
+            android:text="feedback"
+            android:textAlignment="center"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"/>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
