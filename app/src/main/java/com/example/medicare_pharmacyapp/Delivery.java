@@ -89,7 +89,7 @@ public class Delivery extends AppCompatActivity {
         {
             /*Toast.makeText(this,"Please provide your full name.. ",Toast.LENGTH_SHORT);*/
             name2.requestFocus();
-            name2.setError("Enter only alphabetical character!");
+            name2.setError("Enter only alphabetical characters!");
         }
         else if (PhoneNo.length()==0)
         {
@@ -99,7 +99,7 @@ public class Delivery extends AppCompatActivity {
         else if(PhoneNo.length()<10 || PhoneNo.length()>10)
         {
             phone2.requestFocus();
-            phone2.setError("Invalid!");
+            phone2.setError("Enter valid Phone number!");
         }
         else if(Address.length()==0)
         {

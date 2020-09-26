@@ -75,6 +75,10 @@ public class RegisterActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
         }
+
+        else if(phone.length()<10|| phone.length()>10){
+            Toast.makeText(this, "Please enter valid phone number", Toast.LENGTH_SHORT).show();
+        }
         else{
            loadingBar.setTitle("Create Account");
            loadingBar.setMessage("Please wait..");

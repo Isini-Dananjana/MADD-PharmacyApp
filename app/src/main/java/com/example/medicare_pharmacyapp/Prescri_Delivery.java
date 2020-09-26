@@ -139,7 +139,7 @@ public class Prescri_Delivery extends AppCompatActivity {
         else if(PhoneNo.length()<10 || PhoneNo.length()>10)
         {
             phone1.requestFocus();
-            phone1.setError("Invalid!");
+            phone1.setError("Enter valid Phone number!");
         }
         else if(Address.length()==0)
         {
