@@ -10,6 +10,14 @@ public class Feedback {
 
    }
 
+    public Feedback(String phone, String feedback, String date, String time, String smileRating) {
+        this.phone = phone;
+        this.feedback = feedback;
+        this.date = date;
+        this.time = time;
+        this.smileRating = smileRating;
+    }
+
     public String getSmileRating() {
         return smileRating;
     }

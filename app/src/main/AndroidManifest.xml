@@ -13,8 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchProductsActivity"></activity>
-        <activity android:name=".FeedbackActivity"></activity>
         <activity android:name=".SendMessage"></activity>
         <activity android:name=".Checkout_ItemsLayout" />
         <activity android:name=".ConfirmPrescri_order" />
@@ -36,6 +34,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SettingActiviy" />
+        <activity android:name=".AdminFeedback"></activity>
+        <activity android:name=".FeedbackActivity"></activity>
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
