@@ -62,6 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
         String phone = InputPhoneNumber.getText().toString();
         String password = InputPassword.getText().toString();
 
+        String MobilePattern = "[0-9]{10}";
 
         if(TextUtils.isEmpty(name)){
 
@@ -74,6 +75,9 @@ public class RegisterActivity extends AppCompatActivity {
         else if(TextUtils.isEmpty(password)){
 
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
+        }
+        else if(phone.length()<10|| phone.length()>10){
+            Toast.makeText(this, "Please enter valid phone number", Toast.LENGTH_SHORT).show();
         }
         else{
            loadingBar.setTitle("Create Account");
