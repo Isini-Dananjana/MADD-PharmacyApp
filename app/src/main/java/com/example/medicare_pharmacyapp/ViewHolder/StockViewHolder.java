@@ -14,7 +14,7 @@ import com.example.medicare_pharmacyapp.R;
     public class StockViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
-        public TextView txtProductName, txtProductQuantity, txtProductPrice , date , time;
+        public TextView txtProductName, txtProductQuantity, txtProductPrice , date , time , stockTot;
         public ItemClickListener listener;
         public Button edit;
 
@@ -27,6 +27,7 @@ import com.example.medicare_pharmacyapp.R;
             txtProductPrice = (TextView) itemView.findViewById(R.id.product_price);
             date = (TextView) itemView.findViewById(R.id.Stock_date_time);
             edit = itemView.findViewById(R.id.edit_stock_btn);
+            stockTot = itemView.findViewById(R.id.stock_tot);
 
 
         }

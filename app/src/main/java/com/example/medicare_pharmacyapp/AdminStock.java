@@ -72,7 +72,6 @@ public class AdminStock extends AppCompatActivity {
 
 
 
-
         check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,6 +109,7 @@ public class AdminStock extends AppCompatActivity {
         qunatity = inputProductQuan.getText().toString();
         price = inputProductPri.getText().toString();
         pName= inputProductNme.getText().toString();
+
 
          if (TextUtils.isEmpty(qunatity))
         {
@@ -176,6 +176,7 @@ public class AdminStock extends AppCompatActivity {
         productMap.put("date", saveCurrentdate);
         productMap.put("time", saveCurrentTime);
         productMap.put("quantity", qunatity);
+
 
         productMap.put("category", CatName);
         productMap.put("price", price);

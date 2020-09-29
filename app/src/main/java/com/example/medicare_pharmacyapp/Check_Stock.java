@@ -9,8 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,18 +17,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.medicare_pharmacyapp.Model.Stock;
-import com.example.medicare_pharmacyapp.ViewHolder.CartViewHolder;
 import com.example.medicare_pharmacyapp.ViewHolder.StockViewHolder;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -44,14 +37,15 @@ public class Check_Stock extends AppCompatActivity {
     private String getText;
     EditText search;
     ArrayList<Stock> arrayList;
+    private int totPrice=0;
 
     private Button SearchBtn;
     private EditText inputText;
     private RecyclerView searchList;
     private String SearchInput;
-
     private String productID = "";
     private DatabaseReference productsRef;
+    private TextView stockTot;
 
 
 
@@ -67,6 +61,9 @@ public class Check_Stock extends AppCompatActivity {
         stockList.setLayoutManager(new LinearLayoutManager(this));
         check2 = findViewById(R.id.fab);
         editBtn = (Button) findViewById(R.id.edit_stock_btn);
+
+
+
         arrayList = new ArrayList<>();
 
         inputText = findViewById(R.id.search_product);
@@ -95,10 +92,7 @@ public class Check_Stock extends AppCompatActivity {
             }
         });
 
-
-
-
-    }
+          }
 
     private void onStartM() {
 
@@ -116,6 +110,10 @@ public class Check_Stock extends AppCompatActivity {
                         stockViewHolder.txtProductPrice.setText("price of one product: " + stock.getPrice() + "LKR");
                         stockViewHolder.txtProductQuantity.setText("Quantity: " + stock.getQuantity());
                         stockViewHolder.date.setText("Stored date , time : " +stock.getDate()+","+stock.getTime());
+
+
+
+
                         stockViewHolder.edit.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -128,6 +126,8 @@ public class Check_Stock extends AppCompatActivity {
 
                             }
                         });
+
+
 
 
                         stockViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -223,6 +223,13 @@ public class Check_Stock extends AppCompatActivity {
                         stockViewHolder.txtProductPrice.setText("price of one product: " + stock.getPrice() + "LKR");
                         stockViewHolder.txtProductQuantity.setText("Quantity: " + stock.getQuantity());
                         stockViewHolder.date.setText("Stored date , time : " +stock.getDate()+","+stock.getTime());
+
+                        stockViewHolder.stockTot.setText("Expected income "+totPrice((Integer.parseInt(stock.getPrice())),Integer.parseInt(stock.getQuantity())));
+
+
+
+
+
                         stockViewHolder.edit.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -297,10 +304,21 @@ public class Check_Stock extends AppCompatActivity {
 
     }
 
+    public int totPrice(int price, int quan) {
+
+        int tot;
+        tot = price*quan;
+        return tot;
+    }
+
     private void RemoveOrder(String pID) {
 
 
         ordersRef.child(pID).removeValue();
 
     }
+
+
+
+
 }

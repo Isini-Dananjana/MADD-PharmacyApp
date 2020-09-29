@@ -67,6 +67,14 @@ public class Stock {
         this.productState = productState;
     }
 
+    public int getTot() {
+        return tot;
+    }
+
+    public void setTot(int tot) {
+        this.tot = tot;
+    }
+
 
     public Stock(String pname, String price, String category, String pid, String quantity) {
         this.pname = pname;
@@ -77,8 +85,10 @@ public class Stock {
         this.date = date;
         this.time = time;
         this.productState = productState;
+        this.tot = tot;
     }
 
     private String pname, price, category, pid, quantity, date, time, productState;
+    int tot;
 
 }

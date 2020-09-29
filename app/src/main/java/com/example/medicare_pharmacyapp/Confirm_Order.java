@@ -60,96 +60,96 @@ public class Confirm_Order extends AppCompatActivity {
         deliver = new DeliveryModel();
 
 
-          final DatabaseReference ordersRef =  FirebaseDatabase.getInstance().getReference().child("Orders").
+        final DatabaseReference ordersRef =  FirebaseDatabase.getInstance().getReference().child("Orders").
                 child(Prevalent.currentonlineUser.getPhone());
 
 
-         ordersRef.addListenerForSingleValueEvent(new ValueEventListener() {
-             @Override
-             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+        ordersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                 if(dataSnapshot.hasChildren()){
-                     name3.setText(dataSnapshot.child("name").getValue().toString());
-                     phone3.setText(dataSnapshot.child("phone").getValue().toString());
-                     address3.setText(dataSnapshot.child("address").getValue().toString());
-                     city3.setText(dataSnapshot.child("city").getValue().toString());
+                if(dataSnapshot.hasChildren()){
+                    name3.setText(dataSnapshot.child("name").getValue().toString());
+                    phone3.setText(dataSnapshot.child("phone").getValue().toString());
+                    address3.setText(dataSnapshot.child("address").getValue().toString());
+                    city3.setText(dataSnapshot.child("city").getValue().toString());
 
-                     if(dataSnapshot.child("city").getValue().toString().equals("Kandy" ) || dataSnapshot.child("city").getValue().toString().equals("kandy") ){
+                    if(dataSnapshot.child("city").getValue().toString().equals("Kandy" ) || dataSnapshot.child("city").getValue().toString().equals("kandy") ){
 
-                         int del = 100;
+                        int del = 100;
 
-                         int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
+                        int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
 
-                         txttotal_price2.setText("LKR"+dataSnapshot.child("totalAmount").getValue().toString());
-                         txtdel.setText("LKR"+Integer.toString(del));
-                         txttvTotAmountFin.setText("LKR"+Integer.toString(tot));
+                        txttotal_price2.setText("LKR"+dataSnapshot.child("totalAmount").getValue().toString());
+                        txtdel.setText("LKR"+Integer.toString(del));
+                        txttvTotAmountFin.setText("LKR"+Integer.toString(tot));
 
-                     }else if (dataSnapshot.child("city").getValue().toString().equals("Matale" ) || dataSnapshot.child("city").getValue().toString().equals("matale") ) {
+                    }else if (dataSnapshot.child("city").getValue().toString().equals("Matale" ) || dataSnapshot.child("city").getValue().toString().equals("matale") ) {
 
-                         int del = 200;
+                        int del = 200;
 
-                         int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
+                        int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
 
-                         txttotal_price2.setText("LKR"+dataSnapshot.child("totalAmount").getValue().toString());
-                         txtdel.setText("LKR"+Integer.toString(del));
-                         txttvTotAmountFin.setText("LKR"+Integer.toString(tot));
-
-
-                     }else if (dataSnapshot.child("city").getValue().toString().equals("Kurunegala" ) || dataSnapshot.child("city").getValue().toString().equals("kurunegala") ) {
-
-                         int del = 300;
-
-                         int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
-
-                         txttotal_price2.setText("LKR"+dataSnapshot.child("totalAmount").getValue().toString());
-                         txtdel.setText("LKR"+Integer.toString(del));
-                         txttvTotAmountFin.setText("LKR"+Integer.toString(tot));
+                        txttotal_price2.setText("LKR"+dataSnapshot.child("totalAmount").getValue().toString());
+                        txtdel.setText("LKR"+Integer.toString(del));
+                        txttvTotAmountFin.setText("LKR"+Integer.toString(tot));
 
 
-                     }else if (dataSnapshot.child("city").getValue().toString().equals("Kegalle" ) || dataSnapshot.child("city").getValue().toString().equals("kegalle") ) {
+                    }else if (dataSnapshot.child("city").getValue().toString().equals("Kurunegala" ) || dataSnapshot.child("city").getValue().toString().equals("kurunegala") ) {
 
-                         int del = 270;
+                        int del = 300;
 
-                         int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
+                        int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
 
-                         txttotal_price2.setText("LKR" + dataSnapshot.child("totalAmount").getValue().toString());
-                         txtdel.setText("LKR" + Integer.toString(del));
-                         txttvTotAmountFin.setText("LKR" + Integer.toString(tot));
-
-
-                     }else {
-
-                         int del = 380;
-
-                         int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
-
-                         txttotal_price2.setText("LKR" + dataSnapshot.child("totalAmount").getValue().toString());
-                         txtdel.setText("LKR" + Integer.toString(del));
-                         txttvTotAmountFin.setText("LKR" + Integer.toString(tot));
+                        txttotal_price2.setText("LKR"+dataSnapshot.child("totalAmount").getValue().toString());
+                        txtdel.setText("LKR"+Integer.toString(del));
+                        txttvTotAmountFin.setText("LKR"+Integer.toString(tot));
 
 
-                     }
+                    }else if (dataSnapshot.child("city").getValue().toString().equals("Kegalle" ) || dataSnapshot.child("city").getValue().toString().equals("kegalle") ) {
+
+                        int del = 270;
+
+                        int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
+
+                        txttotal_price2.setText("LKR" + dataSnapshot.child("totalAmount").getValue().toString());
+                        txtdel.setText("LKR" + Integer.toString(del));
+                        txttvTotAmountFin.setText("LKR" + Integer.toString(tot));
+
+
+                    }else {
+
+                        int del = 380;
+
+                        int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
+
+                        txttotal_price2.setText("LKR" + dataSnapshot.child("totalAmount").getValue().toString());
+                        txtdel.setText("LKR" + Integer.toString(del));
+                        txttvTotAmountFin.setText("LKR" + Integer.toString(tot));
+
+
+                    }
 
 
 
 
-                         //                     txttotal_price2.setText("LKR"+dataSnapshot.child("totalAmount").getValue().toString());
+                    //                     txttotal_price2.setText("LKR"+dataSnapshot.child("totalAmount").getValue().toString());
 //                     txtdel.setText("LKR"+dataSnapshot.child("deliveryTot").getValue().toString());
 //                     txttvTotAmountFin.setText("LKR"+dataSnapshot.child("finalTot").getValue().toString());
 
 
 
 
-                 }else
-                     Toast.makeText(getApplicationContext(), "No source to Display", Toast.LENGTH_SHORT).show();
+                }else
+                    Toast.makeText(getApplicationContext(), "No source to Display", Toast.LENGTH_SHORT).show();
 
-             }
+            }
 
-             @Override
-             public void onCancelled(@NonNull DatabaseError databaseError) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-             }
-         });
+            }
+        });
 
         btn_Change.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -259,6 +259,10 @@ public class Confirm_Order extends AppCompatActivity {
 
     }
 
+    protected int finalTotCal(int del, int totalAmount)
+    {
+        return del + totalAmount;
+    }
 
 
 }
