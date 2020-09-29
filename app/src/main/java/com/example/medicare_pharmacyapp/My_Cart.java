@@ -43,13 +43,14 @@ public class My_Cart extends AppCompatActivity {
    private TextView totAmount, txtMsg1;
 
 
+
+
    private int totPrice=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my__cart);
-
 
 
         recyclerView = findViewById(R.id.cart_list);
@@ -69,8 +70,7 @@ public class My_Cart extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-                totAmount.setText(String.valueOf(totPrice));
+                totAmount.setText("Total Price = "+String.valueOf(totPrice)+"LKR");
 
                 Intent intent = new Intent(My_Cart.this,Delivery.class);
                 intent.putExtra("Total Price",String.valueOf(totPrice));
@@ -82,6 +82,7 @@ public class My_Cart extends AppCompatActivity {
 
 
     }
+
 
     @Override
     protected void onStart() {
@@ -103,9 +104,15 @@ public class My_Cart extends AppCompatActivity {
                 cartViewHolder.txtProductPrice.setText("Price = "+cart.getPrice()+" LKR");
                 cartViewHolder.txtProductName.setText(cart.getPName());
 
+                int oneTypeProductTPrice  = oneProductPrice(Integer.parseInt(cart.getQuantity()) , Integer.parseInt(cart.getPrice()));
+                 // int oneTypeProductTPrice = ((Integer.parseInt(cart.getPrice()))) * Integer.parseInt(cart.getQuantity());
+                   totPrice = totPrice + oneTypeProductTPrice;
 
-                int oneTypeProductTPrice = ((Integer.parseInt(cart.getPrice())))*Integer.parseInt(cart.getQuantity());
-                totPrice = totPrice + oneTypeProductTPrice;
+
+
+
+
+
 
 
                 cartViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -181,6 +188,8 @@ public class My_Cart extends AppCompatActivity {
         adapter.startListening();
     }
 
+
+
     private void CheckOrderState(){
 
         DatabaseReference ordersRef;
@@ -231,5 +240,17 @@ public class My_Cart extends AppCompatActivity {
             }
         });
     }
+
+    /*public int  calculate_oneProductPrice(Cart cart, int q, int  p){
+        int oneProductPrice = oneProductPrice(Integer.parseInt(cart.getQuantity()) , Integer.parseInt(cart.getPrice()));
+        return oneProductPrice;
+
+    }*/
+
+    protected int oneProductPrice(int parseInt, int parseInt1) {
+
+        return parseInt*parseInt1;
+    }
+
 
 }
