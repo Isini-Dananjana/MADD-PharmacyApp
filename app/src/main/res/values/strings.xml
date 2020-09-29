@@ -75,10 +75,10 @@
     <string name="tot">Total price</string>
     <string name="cont">CONTINUE</string>
     <string name="please">Please enter your delivery details</string>
-    <string name="name">Name</string>
-    <string name="pNo">Phone number</string>
-    <string name="addr">Address</string>
-    <string name="cty">City</string>
+    <string name="name">Enter Name</string>
+    <string name="pNo">Enter Phone number</string>
+    <string name="addr">Enter Address</string>
+    <string name="cty">Enter nearest city</string>
     <string name="confirm">CONFIRM</string>
     <string name="upload">CLICK TO UPLOAD YOUR PRESCRIPTION</string>
     <string name="plster">LKR280.00</string>
