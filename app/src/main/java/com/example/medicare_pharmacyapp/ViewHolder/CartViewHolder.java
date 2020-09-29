@@ -1,6 +1,7 @@
 package com.example.medicare_pharmacyapp.ViewHolder;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,8 +15,10 @@ public class CartViewHolder extends RecyclerView.ViewHolder implements View.OnCl
     public TextView txtProductName, txtProductPrice, txtProductQuantity;
     private ItemClickListener itemClickListener;
 
+
     public CartViewHolder(@NonNull View itemView) {
         super(itemView);
+
 
         txtProductName = itemView.findViewById(R.id.cart_product_name);
         txtProductQuantity = itemView.findViewById(R.id.cart_product_quantity);

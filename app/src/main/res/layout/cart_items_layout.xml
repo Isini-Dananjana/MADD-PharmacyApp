@@ -8,10 +8,12 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="100dp"
         android:background="@color/colorPrimaryDark"
         android:padding="10dp"
         android:textAlignment="textEnd">
+
+
 
         <TextView
             android:id="@+id/cart_product_name"
