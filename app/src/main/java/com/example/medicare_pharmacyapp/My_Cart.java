@@ -35,7 +35,7 @@ public class My_Cart extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private Button Next;
-    private TextView totAmount ;
+    private TextView totAmount;
 
     private int totPrice=0;
 

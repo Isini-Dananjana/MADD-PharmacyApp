@@ -175,7 +175,7 @@ public class SettingActiviy extends AppCompatActivity {
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Update Profile");
-        progressDialog.setMessage("Please while, we're setting things..");
+        progressDialog.setMessage("Please wait while, we're setting things..");
         progressDialog.setCanceledOnTouchOutside(false);
         progressDialog.show();
 

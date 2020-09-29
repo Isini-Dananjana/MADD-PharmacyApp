@@ -76,7 +76,7 @@ public class Confirm_Order extends AppCompatActivity {
 
                      if(dataSnapshot.child("city").getValue().toString().equals("Kandy" ) || dataSnapshot.child("city").getValue().toString().equals("kandy") ){
 
-                         int del = 150;
+                         int del = 100;
 
                          int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
 
@@ -86,7 +86,7 @@ public class Confirm_Order extends AppCompatActivity {
 
                      }else if (dataSnapshot.child("city").getValue().toString().equals("Matale" ) || dataSnapshot.child("city").getValue().toString().equals("matale") ) {
 
-                         int del = 250;
+                         int del = 200;
 
                          int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
 
@@ -119,7 +119,7 @@ public class Confirm_Order extends AppCompatActivity {
 
                      }else {
 
-                         int del = 400;
+                         int del = 380;
 
                          int tot = Integer.parseInt(dataSnapshot.child("totalAmount").getValue().toString()) + del;
 
