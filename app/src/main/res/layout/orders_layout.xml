@@ -24,7 +24,7 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="User Name"
+            android:text="User name"
             android:textColor="@color/colorText"
             android:textSize="15dp"
             android:textStyle="bold" />

@@ -28,7 +28,7 @@
             android:layout_marginStart="2dp"
             android:layout_marginTop="5dp"
             android:gravity="center"
-            android:text="Name"
+            android:text="Product Name"
             android:textAlignment="viewStart"
             android:textColor="@color/colorText"
             android:textColorHighlight="@color/colorText"
