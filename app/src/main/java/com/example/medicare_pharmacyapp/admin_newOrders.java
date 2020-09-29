@@ -70,7 +70,7 @@ public class admin_newOrders extends AppCompatActivity {
                     protected void onBindViewHolder(@NonNull AdminOrdersViewHolder adminOrdersViewHolder, final int option, @NonNull final AdminOrders adminOrders) {
 
                         adminOrdersViewHolder.userName.setText("Name: " +adminOrders.getName());
-                        adminOrdersViewHolder.userPhoneNumber.setText("Phone: " +adminOrders.getPhone());
+                        adminOrdersViewHolder.userPhoneNumber.setText( adminOrders.getPhone());
                         adminOrdersViewHolder.userTotalPrice.setText("Total Price: " +adminOrders.getTotalAmount()+ "LKR");
                         adminOrdersViewHolder.userDateTime.setText("Ordered at: " +adminOrders.getDate()+","+adminOrders.getTime());
                         adminOrdersViewHolder.userShippingAddress.setText("Address: " +adminOrders.getAddress()+", "+adminOrders.getCity());

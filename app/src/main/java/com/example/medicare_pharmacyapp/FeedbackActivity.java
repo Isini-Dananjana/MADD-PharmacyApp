@@ -46,14 +46,14 @@ protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feedback);
 
-        /*final String saveCurrentdate,saveCurrentTime;
+        final String saveCurrentdate,saveCurrentTime;
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat currentDate = new SimpleDateFormat("MMM dd, yyyy");
         saveCurrentdate = currentDate.format(calendar.getTime());
 
         SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss a");
         saveCurrentTime = currentTime.format(calendar.getTime());
-*/
+
         smileRating = findViewById(R.id.ratingView);
 
 
@@ -101,7 +101,7 @@ protected void onCreate(Bundle savedInstanceState) {
         public void onClick(View v)
         {
             Check();
-            /*if(TextUtils.isEmpty(smile))
+            if(TextUtils.isEmpty(smile))
             {
                 Toast.makeText(FeedbackActivity.this,"Please select a smile value",Toast.LENGTH_SHORT);
             }
@@ -125,7 +125,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
                 Ref.child(phone).setValue(feedback);
                 Toast.makeText(FeedbackActivity.this, "Submitted your feedback successfully", Toast.LENGTH_SHORT).show();
-            }*/
+            }
         }
     });
 
