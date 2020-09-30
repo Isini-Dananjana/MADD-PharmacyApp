@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.medicare_pharmacyapp.Model.Pres_Delivery;
@@ -37,6 +38,7 @@ public class ConfirmPrescri_order extends AppCompatActivity {
     private static final int GalleryPick = 1;
     private Uri ImageUri;
     private StorageReference PrescriptionsImagesRef;
+    private TextView tvDelpres;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class ConfirmPrescri_order extends AppCompatActivity {
 
         btn_Change = findViewById(R.id.btn_Change);
         deliver = new Pres_Delivery();
+        tvDelpres = findViewById(R.id.tvDelpres);
 
 
 
@@ -67,6 +70,56 @@ public class ConfirmPrescri_order extends AppCompatActivity {
                     phone3.setText(dataSnapshot.child("phone").getValue().toString());
                     address3.setText(dataSnapshot.child("address").getValue().toString());
                     city3.setText(dataSnapshot.child("city").getValue().toString());
+
+
+
+                    if(dataSnapshot.child("city").getValue().toString().equals("Kandy" ) || dataSnapshot.child("city").getValue().toString().equals("kandy") ){
+
+                        int del = 100;
+
+
+                        tvDelpres.setText("LKR"+Integer.toString(del));
+
+
+                    }else if (dataSnapshot.child("city").getValue().toString().equals("Matale" ) || dataSnapshot.child("city").getValue().toString().equals("matale") ) {
+
+                        int del = 200;
+
+
+                        tvDelpres.setText("LKR"+Integer.toString(del));
+
+
+
+                    }else if (dataSnapshot.child("city").getValue().toString().equals("Kurunegala" ) || dataSnapshot.child("city").getValue().toString().equals("kurunegala") ) {
+
+                        int del = 300;
+
+
+                        tvDelpres.setText("LKR"+Integer.toString(del));
+
+
+
+                    }else if (dataSnapshot.child("city").getValue().toString().equals("Kegalle" ) || dataSnapshot.child("city").getValue().toString().equals("kegalle") ) {
+
+                        int del = 270;
+
+
+
+
+                        tvDelpres.setText("LKR" + Integer.toString(del));
+
+
+
+                    }else {
+
+                        int del = 380;
+
+                        tvDelpres.setText("LKR" + Integer.toString(del));
+
+
+
+                    }
+
 
 
 

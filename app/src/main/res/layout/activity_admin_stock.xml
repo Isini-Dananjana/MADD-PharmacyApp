@@ -25,4 +25,9 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@drawable/orders" />
 
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="389dp"
+        android:layout_height="30dp" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
