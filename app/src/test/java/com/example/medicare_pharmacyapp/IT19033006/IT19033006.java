@@ -1,7 +1,11 @@
-package com.example.medicare_pharmacyapp;
+package com.example.medicare_pharmacyapp.IT19033006;
+
+import com.example.medicare_pharmacyapp.Check_Stock;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -13,14 +17,21 @@ import static org.junit.Assert.assertEquals;
  */
 public class IT19033006 {
 
+    private static Check_Stock check_stock;
     int result;
-    private Check_Stock check_stock;
 
 
+
+    @BeforeClass
+    public static void initCheck_stock()
+    {
+        check_stock = new Check_Stock();
+    }
     @Before
     public void setUp()
     {
-        check_stock = new Check_Stock();
+        result = 0;
+
     }
 
     @Test
@@ -29,7 +40,15 @@ public class IT19033006 {
        result = check_stock.totPrice(600,2);
        assertEquals(1200,result);
 
+
        }
+
+    @Test
+    public void TestMultiplication2 (){
+
+        result = check_stock.totPrice(800,0);
+        assertEquals(0,result);
+    }
 
     @After
 
@@ -37,6 +56,13 @@ public class IT19033006 {
         result = 0;
 
     }
+
+    @AfterClass
+    public  static void clearAll()
+    {
+        check_stock = null;
+
     }
+}
 //test
 //It19033006

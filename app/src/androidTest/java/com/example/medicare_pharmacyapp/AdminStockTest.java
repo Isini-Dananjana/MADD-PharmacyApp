@@ -1,0 +1,43 @@
+package com.example.medicare_pharmacyapp;
+
+import androidx.test.espresso.Espresso;
+import androidx.test.rule.ActivityTestRule;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.typeText;
+import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static org.junit.Assert.*;
+
+public class AdminStockTest {
+
+    public ActivityTestRule<AdminStock> activityTestRule  = new ActivityTestRule<AdminStock>(AdminStock.class);
+    private String name = "Bio oil"; private String des = "Bio oil 130 mg kjklxhoihihuigk";
+    private String price = "450";
+
+
+
+    @Before
+    public void setUp() throws Exception {
+
+    }
+
+    @Test
+    public void testUserInput()
+
+    {
+        Espresso.onView(withId(R.id.product_name)).perform(typeText(name));
+        Espresso.onView(withId(R.id.product_price)).perform(typeText(price));
+        Espresso.onView(withId(R.id.product_description)).perform(typeText(des));
+        Espresso.closeSoftKeyboard();
+        Espresso.onView(withId(R.id.add_new_stock)).perform(click());
+    }
+
+
+    @After
+    public void tearDown() throws Exception {
+    }
+}

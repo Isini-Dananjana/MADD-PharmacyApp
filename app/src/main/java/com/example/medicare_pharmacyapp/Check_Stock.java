@@ -110,6 +110,8 @@ public class Check_Stock extends AppCompatActivity {
                         stockViewHolder.txtProductPrice.setText("price of one product: " + stock.getPrice() + "LKR");
                         stockViewHolder.txtProductQuantity.setText("Quantity: " + stock.getQuantity());
                         stockViewHolder.date.setText("Stored date , time : " +stock.getDate()+","+stock.getTime());
+                        stockViewHolder.stockTot.setText("Expected income "+totPrice((Integer.parseInt(stock.getPrice())),Integer.parseInt(stock.getQuantity())));
+
 
 
 

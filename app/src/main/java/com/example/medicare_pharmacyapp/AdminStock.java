@@ -124,18 +124,20 @@ public class AdminStock extends AppCompatActivity {
             Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();
         }
 
-         else if ((pName.length()) > 10)
+         else if ((pName.length()) > 30)
          {
-             inputProductNme.setError("Cannot enter more than 10 words for product name");
+             inputProductNme.setError("Cannot enter more than 30 words for product name");
          }
 
          else if(!qunatity.matches("[0-9]+"))
          {
+             isValidateQty(qunatity);
              inputProductQuan.setError("PLEASE ENTER A NUMERICAL VALUE");
          }
 
          else if(!price.matches("[0-9]+"))
          {
+             isValidatePrice( price);
              inputProductPri.requestFocus();
              inputProductPri.setError("PLEASE ENTER A NUMERICAL VALUE ");
          }
@@ -146,10 +148,26 @@ public class AdminStock extends AppCompatActivity {
     }
 
 
+    public boolean isValidatePrice(String price) {
+        if(price.matches("[0-9]+")){
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public boolean isValidateQty(String qunatity) {
+        if(price.matches("[0-9]+")){
+            return true;
+        }
+        else
+            return false;
+    }
+
 
     private void StoreProductInformation()
     {
-        loadingBar.setTitle("Add New Product");
+        loadingBar.setTitle("Add New Product to stock");
         loadingBar.setMessage("Dear Admin, please wait while we are adding the new product.");
         loadingBar.setCanceledOnTouchOutside(false);
         loadingBar.show();
@@ -191,14 +209,14 @@ public class AdminStock extends AppCompatActivity {
 
                         {
 
-                            // Toast.makeText(AddItem.this, "Product is added successfully..", Toast.LENGTH_SHORT).show();
-                            // loadingBar.dismiss();
 
                             Intent intent1 = new Intent(AdminStock.this, AdminStock.class);
                             startActivity(intent1);
 
+
                             loadingBar.dismiss();
                             Toast.makeText(AdminStock.this, "Stock added successfully..", Toast.LENGTH_LONG).show();
+
                         }
                         else
                         {

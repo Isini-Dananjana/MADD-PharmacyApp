@@ -112,7 +112,7 @@ public class editStock extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Void> task) {
                     if(task.isSuccessful())
                     {
-                        Toast.makeText(editStock.this,"Changes applied succesfully",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(editStock.this,"Changes applied succesfully",Toast.LENGTH_LONG).show();
 
                         Intent intent = new Intent(editStock.this, Check_Stock.class);
                         startActivity(intent);

@@ -73,11 +73,13 @@ public class SearchStockActivity extends AppCompatActivity {
                         Picasso.get().load(products.getImage()).into(productViewHolder.imageView);
 
 
+
+
                         productViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
 
-                                    Intent intent = new Intent(SearchStockActivity.this, Display_Item.class);
+                                    Intent intent = new Intent(SearchStockActivity.this, Check_Stock.class);
                                     intent.putExtra("pid",products.getPid());
                                     startActivity(intent);
 

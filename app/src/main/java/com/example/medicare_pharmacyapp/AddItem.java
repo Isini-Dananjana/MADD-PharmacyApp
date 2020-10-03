@@ -129,9 +129,9 @@ public class AddItem extends AppCompatActivity {
             Toast.makeText(this, "Please write product name...", Toast.LENGTH_SHORT).show();
         }
 
-        else if ((pName.length()) > 10)
+        else if ((pName.length()) > 30)
         {
-            inputProductNme.setError("Cannot enter more than 10 words for product name");
+            inputProductNme.setError("Cannot enter more than 30 words for product name");
              }
 
         else if ((description.length()) < 10)
@@ -141,6 +141,7 @@ public class AddItem extends AppCompatActivity {
 
         else if(!price.matches("[0-9]+"))
         {
+            isValidatePrice(price);
             inputProductPri.requestFocus();
             inputProductPri.setError("ENTER A NUMERICAL VALUE ");
         }
@@ -149,6 +150,14 @@ public class AddItem extends AppCompatActivity {
             StoreProductInformation();
         }
     }
+
+        public boolean isValidatePrice(String price) {
+            if(price.matches("[0-9]+")){
+                return true;
+            }
+            else
+                return false;
+        }
 
 
 
@@ -189,7 +198,7 @@ public class AddItem extends AppCompatActivity {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot)
             {
-                Toast.makeText(AddItem.this, "Product Image uploaded Successfully...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddItem.this, "Product Image uploaded Successfully...", Toast.LENGTH_LONG).show();
 
                 Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
@@ -248,7 +257,7 @@ public class AddItem extends AppCompatActivity {
                            // Toast.makeText(AddItem.this, "Product is added successfully..", Toast.LENGTH_SHORT).show();
                            // loadingBar.dismiss();
 
-                            Intent intent1 = new Intent(AddItem.this, AddCategory.class);
+                            Intent intent1 = new Intent(AddItem.this, AddItem.class);
                             startActivity(intent1);
 
                            loadingBar.dismiss();
