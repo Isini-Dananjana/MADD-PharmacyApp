@@ -2,7 +2,7 @@ package com.example.medicare_pharmacyapp;
 
 import androidx.test.espresso.Espresso;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.rule.ActivityTestRule;
+
 
 import org.junit.After;
 import org.junit.Before;

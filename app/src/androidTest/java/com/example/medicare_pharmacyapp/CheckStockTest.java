@@ -1,6 +1,7 @@
 package com.example.medicare_pharmacyapp;
 
 import androidx.test.espresso.Espresso;
+import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.rule.ActivityTestRule;
@@ -39,9 +40,9 @@ public class CheckStockTest {
     public void testUserInput()
 
     {
-        Espresso.onView(withId(R.id.product_name)).check(matches(withText(name)));
-        Espresso.onView(withId(R.id.product_price)).check(matches(withText(name)));
-        Espresso.onView(withId(R.id.product_quantity)).check(matches(withText(name)));
+        final ViewInteraction check = Espresso.onView(withId(R.id.product_name)).check(matches(withText(name)));
+        Espresso.onView(withId(R.id.product_price)).check(matches(withText(price)));
+        Espresso.onView(withId(R.id.product_quantity)).check(matches(withText(des)));
 
 
 
