@@ -34,9 +34,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
-import com.tomer.fadingtextview.FadingTextView;
+/*import com.tomer.fadingtextview.FadingTextView;
 
-import static com.tomer.fadingtextview.FadingTextView.SECONDS;
+import static com.tomer.fadingtextview.FadingTextView.SECONDS;*/
 
 public class My_Cart extends AppCompatActivity {
 
