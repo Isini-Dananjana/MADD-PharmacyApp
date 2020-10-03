@@ -17,12 +17,13 @@ import static org.junit.Assert.*;
 public class AdminStockTest {
 
 
-    private String name = "Bio oil"; private String des = "Bio oil 130 mg kjklxhoihihuigk";
+    private String name = "Bio oil"; private String qty = "5";
     private String price = "450";
 
     @Rule
     public ActivityScenarioRule<AdminStock> activityRule
             = new ActivityScenarioRule<>(AdminStock.class);
+
 
 
     @Before
@@ -36,7 +37,7 @@ public class AdminStockTest {
     {
         Espresso.onView(withId(R.id.product_name)).perform(typeText(name));
         Espresso.onView(withId(R.id.product_price)).perform(typeText(price));
-        Espresso.onView(withId(R.id.product_description)).perform(typeText(des));
+        Espresso.onView(withId(R.id.product_quantity)).perform(typeText(qty));
         Espresso.closeSoftKeyboard();
         Espresso.onView(withId(R.id.add_new_stock)).perform(click());
     }

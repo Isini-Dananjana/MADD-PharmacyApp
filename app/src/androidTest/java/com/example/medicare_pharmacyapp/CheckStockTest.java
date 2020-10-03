@@ -23,7 +23,7 @@ import static java.util.EnumSet.allOf;
 @RunWith(AndroidJUnit4.class)
 public class CheckStockTest {
 
-    private String name = "Bio oil"; private String des = "Bio oil 130 mg kjklxhoihihuigk";
+    private String name = "Bio oil"; private String qty = "5";
     private String price = "450";
 
 
@@ -40,9 +40,9 @@ public class CheckStockTest {
     public void testUserInput()
 
     {
-        final ViewInteraction check = Espresso.onView(withId(R.id.product_name)).check(matches(withText(name)));
+       Espresso.onView(withId(R.id.product_name)).check(matches(withText(name)));
         Espresso.onView(withId(R.id.product_price)).check(matches(withText(price)));
-        Espresso.onView(withId(R.id.product_quantity)).check(matches(withText(des)));
+        Espresso.onView(withId(R.id.product_quantity)).check(matches(withText(qty)));
 
 
 
