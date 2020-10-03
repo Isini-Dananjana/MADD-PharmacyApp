@@ -7,34 +7,36 @@
     app:cardElevation="15dp">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_width="300dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="46dp"
         android:background="@color/colorPrimaryDark"
         android:padding="10dp"
         android:textAlignment="textEnd">
-
 
 
         <TextView
             android:id="@+id/cart_product_name"
             android:layout_width="160dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
+            android:layout_centerHorizontal="true"
             android:text="Product Name"
+            android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="14dp"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/cart_product_quantity"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_below="@id/cart_product_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:text="Product Quantity"
+            android:textAlignment="center"
             android:textColor="@android:color/white"
-            android:textSize="14dp"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
         <TextView
@@ -43,12 +45,29 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/cart_product_quantity"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:text="Product Price"
-            android:textColor="@android:color/white"
-            android:textSize="14dp"
+            android:textColor="@android:color/black"
+            android:textSize="16dp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/marquee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:text="Click on item to Edit or Remove"
+            android:textSize="14dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:padding="10dp"
+            android:layout_below="@id/cart_product_price"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            />
 
 
     </RelativeLayout>

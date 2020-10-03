@@ -13,6 +13,7 @@ public class IT19150444 {
     private static RegisterActivity registerActivity;
     //  boolean phone =registerActivity.findViewById(R.id.login_phone_num_Input);
     boolean phone;
+    boolean password;
 
     @BeforeClass
     public static void createObj(){
@@ -24,6 +25,7 @@ public class IT19150444 {
 
 
         phone = false;
+        password = false;
     }
     @Test
     public void phone_isCorrect1() {
@@ -59,6 +61,20 @@ public class IT19150444 {
 
         phone=registerActivity.isValidatePhone("345gggf");
         assertFalse(phone);
+    }
+    @Test
+    public void password_isCorrect1() {
+
+
+        password=registerActivity.isValidatePassword("123");
+        assertFalse(password);
+    }
+    @Test
+    public void password_isCorrect2() {
+
+
+        password=registerActivity.isValidatePassword("ayesha123");
+        assertTrue(password);
     }
     @After
     public void clear(){

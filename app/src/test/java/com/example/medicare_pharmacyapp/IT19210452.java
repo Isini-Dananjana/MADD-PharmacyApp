@@ -18,29 +18,103 @@ import static org.junit.Assert.*;
  */
 public class IT19210452 {
 
-    private Confirm_Order confirm_order;
-    int tot;
+    static private Confirm_Order confirm_order;
+    static private Delivery delivery;
 
- //   @BeforeClass
+    int tot;
+    boolean PhoneNo;
+    boolean Cname;
+
+    @BeforeClass
+    public static void initMain() throws Exception {
+        confirm_order = new Confirm_Order();
+        delivery = new Delivery();
+    }
 
     @Before
-    public void createObj(){
-
-        confirm_order = new Confirm_Order();
+    public void setUp(){
+        tot=0;
+        PhoneNo= false;
+        Cname= false;
     }
 
     @Test
-    public void finalTotCal_isCorrect() {
+    public void finalTot1Cal_isCorrect() {
 
 
          tot = confirm_order.finalTotCal(100,1220);
         assertEquals(1320, tot, 0.001);
     }
-    @After
-    public void clearData()
-    {
-        tot = 0;
+
+    @Test
+    public void finalTot2Cal_isCorrect() {
+
+
+        tot = confirm_order.finalTotCal(100,800);
+        assertEquals(1000, tot, 0.001);
+    }
+    @Test
+    public void finalTot3Cal_isCorrect() {
+
+
+        tot = confirm_order.finalTotCal(100,700);
+        assertNotEquals(1000, tot, 0.001);
     }
 
-  //@AfterClass
+    @Test
+    public void PhoneNo1_correct()
+    {
+        PhoneNo = delivery.isValidPhoneNum("0774056789");
+        assertTrue(PhoneNo);
+    }
+    @Test
+    public void PhoneNo2_correct()
+    {
+        PhoneNo = delivery.isValidPhoneNum("0776paa567");
+        assertTrue(PhoneNo);
+    }
+    @Test
+    public void PhoneNo3_correct()
+    {
+        PhoneNo = delivery.isValidPhoneNum("");
+        assertFalse(PhoneNo);
+    }
+    @Test
+    public  void  PhoneNo4_correct()
+    {
+        PhoneNo = delivery.isValidPhoneNum("077");
+        assertTrue(PhoneNo);
+    }
+    @Test
+    public void PhoneNo5_correct()
+    {
+        PhoneNo = delivery.isValidPhoneNum("abcd");
+        assertFalse(PhoneNo);
+    }
+    @Test
+    public void Cname2_iscorrect()
+    {
+        Cname = delivery.isValidName("Sandali");
+        assertTrue(Cname);
+    }
+    @Test
+    public  void  Cname1_iscorrect()
+    {
+        Cname = delivery.isValidName("San11");
+        assertFalse(Cname);
+    }
+
+    @After
+    public void clearData()throws Exception
+    {
+        tot = 0;
+        PhoneNo = false;
+        Cname = false;
+
+    }
+    @AfterClass
+    public static void deleteOb(){
+        delivery = null;
+        confirm_order= null;
+    }
 }

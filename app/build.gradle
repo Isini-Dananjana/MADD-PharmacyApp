@@ -105,6 +105,9 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 //animation
     implementation 'com.airbnb.android:lottie:3.4.2'
+
+    //fading text
+  /*  implementation 'com.tomer:fadingtextview:1.8.1'*/
    //implementation  'com.github.YuganshT79:Smiley-Rating:1.0.2'
 
     implementation 'com.github.sujithkanna:smileyrating:2.0.0'

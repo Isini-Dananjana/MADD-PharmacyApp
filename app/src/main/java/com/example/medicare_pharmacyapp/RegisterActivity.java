@@ -84,19 +84,32 @@ public class RegisterActivity extends AppCompatActivity {
         else{
 
             isValidatePhone(phone);
-            if(isValidatePhone(phone)) {
+            isValidatePassword(password);
+            if(isValidatePhone(phone)==true && isValidatePassword(password)==true) {
                 loadingBar.setTitle("Create Account");
                 loadingBar.setMessage("Please wait..");
                 loadingBar.setCanceledOnTouchOutside(false);
                 loadingBar.show();
 
                 ValidatephoneNumber(name, phone, password);
+            }else {
+                Toast.makeText(this, "Please enter valid phone number or enter more than 4 character password", Toast.LENGTH_SHORT).show();
             }
-            else{
-                Toast.makeText(this, "Please enter valid phone number", Toast.LENGTH_SHORT).show();
-            }
+
         }
 
+    }
+
+    public boolean isValidatePassword(String password) {
+
+        if(password.length()<4){
+
+         //   Toast.makeText(this, "Please enter more than 4 character password", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     public boolean isValidatePhone(String phone) {

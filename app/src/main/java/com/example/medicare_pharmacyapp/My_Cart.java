@@ -34,6 +34,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+/*import com.tomer.fadingtextview.FadingTextView;
+
+import static com.tomer.fadingtextview.FadingTextView.SECONDS;*/
 
 public class My_Cart extends AppCompatActivity {
 
@@ -45,13 +48,13 @@ public class My_Cart extends AppCompatActivity {
 
 
 
+
    private int totPrice=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my__cart);
-
 
         recyclerView = findViewById(R.id.cart_list);
         recyclerView.setHasFixedSize(true);
@@ -77,6 +80,8 @@ public class My_Cart extends AppCompatActivity {
                 startActivity(intent);
                 finish();
 
+                Toast.makeText(My_Cart.this,"Total price for the items you purchased is "+totPrice+" LKR",Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -87,6 +92,7 @@ public class My_Cart extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
 
         CheckOrderState();
 
@@ -247,9 +253,9 @@ public class My_Cart extends AppCompatActivity {
 
     }*/
 
-    protected int oneProductPrice(int parseInt, int parseInt1) {
+    protected int oneProductPrice(int price, int quantity) {
 
-        return parseInt*parseInt1;
+        return price*quantity;
     }
 
 

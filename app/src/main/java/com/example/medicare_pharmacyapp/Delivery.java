@@ -37,6 +37,7 @@ public class Delivery extends AppCompatActivity {
     private String totalAmount = " ";
     private String delTot = " ";
     private String finalTot = "";
+    private String phoneNo;
 
     @SuppressLint("ShowToast")
     @Override
@@ -87,6 +88,7 @@ public class Delivery extends AppCompatActivity {
 
         else if(!Cname.matches("[a-zA-Z ]+")  )
         {
+            isValidName(Cname);
             /*Toast.makeText(this,"Please provide your full name.. ",Toast.LENGTH_SHORT);*/
             name2.requestFocus();
             name2.setError("Enter only alphabetical characters!");
@@ -96,10 +98,19 @@ public class Delivery extends AppCompatActivity {
             phone2.requestFocus();
             phone2.setError("Phone number cannot be empty!");
         }
-        else if(PhoneNo.length()<10 || PhoneNo.length()>10)
+  /*      else if(PhoneNo.length()<10 || PhoneNo.length()>10)
         {
+            isValidPhoneNum(PhoneNo);
             phone2.requestFocus();
             phone2.setError("Enter valid Phone number!");
+        }*/
+        else if(!(PhoneNo.matches("[0-9]{10}")))
+        {
+            isValidPhoneNum(PhoneNo);
+            phone2.requestFocus();
+            phone2.setError("Invalid phone number!");
+
+
         }
         else if(Address.length()==0)
         {
@@ -116,6 +127,27 @@ public class Delivery extends AppCompatActivity {
             ConfirmOrder();
         }
     }
+
+    public boolean isValidName(String Cname) {
+        if (Cname.matches("[a-zA-Z ]+"))
+        {
+            return true;
+        }
+        else
+            return false;
+
+    }
+
+    public boolean isValidPhoneNum(String PhoneNo) {
+
+
+        if(PhoneNo.matches("[0-9]{10}")){
+            return true;
+        }
+        else
+            return false;
+    }
+
 
     private void ConfirmOrder()
     {
