@@ -29,8 +29,8 @@ import io.paperdb.Paper;
 public class LoginActivity extends AppCompatActivity {
 
 
-    private EditText inputPhoneNumber, inputPassword;
-    private Button loginButton;
+    protected EditText inputPhoneNumber, inputPassword;
+    protected Button loginButton;
     private ProgressDialog loadingBar;
     private TextView adminLink, notAdminLink;
 
@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void LoginUser(){
+    protected void LoginUser(){
 
         String phone = inputPhoneNumber.getText().toString();
         String password = inputPassword.getText().toString();
@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void AllowAccessToAccount(final String phone, final String password){
+    protected void AllowAccessToAccount(final String phone, final String password){
 
         if(chkBoxRememberMe.isChecked()){
 

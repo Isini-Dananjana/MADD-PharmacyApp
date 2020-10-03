@@ -25,7 +25,7 @@ import java.util.HashMap;
 public class RegisterActivity extends AppCompatActivity {
 
     private Button CreateAccountButton;
-    private EditText InputName, InputPhoneNumber, InputPassword;
+    protected EditText InputName, InputPhoneNumber, InputPassword;
     private ProgressDialog loadingBar;
 
 
@@ -62,7 +62,7 @@ public class RegisterActivity extends AppCompatActivity {
         String phone = InputPhoneNumber.getText().toString();
         String password = InputPassword.getText().toString();
 
-        String MobilePattern = "[0-9]{10}";
+        //String MobilePattern = "[0-9]{10}";
 
         if(TextUtils.isEmpty(name)){
 
@@ -71,23 +71,40 @@ public class RegisterActivity extends AppCompatActivity {
         else if(TextUtils.isEmpty(phone)){
 
             Toast.makeText(this, "Please enter your phone number", Toast.LENGTH_SHORT).show();
+
         }
         else if(TextUtils.isEmpty(password)){
 
             Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
         }
-        else if(phone.length()<10|| phone.length()>10){
+       /* else if(phone.length()<10|| phone.length()>10){
             Toast.makeText(this, "Please enter valid phone number", Toast.LENGTH_SHORT).show();
-        }
+        }*/
+
         else{
-           loadingBar.setTitle("Create Account");
-           loadingBar.setMessage("Please wait..");
-           loadingBar.setCanceledOnTouchOutside(false);
-            loadingBar.show();
 
-            ValidatephoneNumber(name, phone, password);
+            isValidatePhone(phone);
+            if(isValidatePhone(phone)) {
+                loadingBar.setTitle("Create Account");
+                loadingBar.setMessage("Please wait..");
+                loadingBar.setCanceledOnTouchOutside(false);
+                loadingBar.show();
+
+                ValidatephoneNumber(name, phone, password);
+            }
+            else{
+                Toast.makeText(this, "Please enter valid phone number", Toast.LENGTH_SHORT).show();
+            }
         }
 
+    }
+
+    public boolean isValidatePhone(String phone) {
+        if(phone.matches("[0-9]{10}")){
+            return true;
+        }
+        else
+            return false;
     }
 
     private void ValidatephoneNumber(final String name, final String phone, final String password) {
