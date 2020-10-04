@@ -51,7 +51,7 @@ public class IT19210452 {
 
 
         tot = confirm_order.finalTotCal(100,800);
-        assertEquals(1000, tot, 0.001);
+        assertEquals(900, tot, 0.001);
     }
     @Test
     public void finalTot3Cal_isCorrect() {
@@ -71,7 +71,7 @@ public class IT19210452 {
     public void PhoneNo2_correct()
     {
         PhoneNo = delivery.isValidPhoneNum("0776paa567");
-        assertTrue(PhoneNo);
+        assertFalse(PhoneNo);
     }
     @Test
     public void PhoneNo3_correct()
@@ -83,7 +83,7 @@ public class IT19210452 {
     public  void  PhoneNo4_correct()
     {
         PhoneNo = delivery.isValidPhoneNum("077");
-        assertTrue(PhoneNo);
+        assertFalse(PhoneNo);
     }
     @Test
     public void PhoneNo5_correct()
@@ -103,14 +103,12 @@ public class IT19210452 {
         Cname = delivery.isValidName("San11");
         assertFalse(Cname);
     }
-
     @After
     public void clearData()throws Exception
     {
         tot = 0;
         PhoneNo = false;
         Cname = false;
-
     }
     @AfterClass
     public static void deleteOb(){

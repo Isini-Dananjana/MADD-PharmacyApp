@@ -35,6 +35,7 @@ public class ConfirmPrescri_order extends AppCompatActivity {
     private DataSnapshot dataSnapshot;
     private Button btn_Change;
     private EditText name3, phone3, address3, city3;
+    private String Cname , PhoneNo,Address, City;
     private static final int GalleryPick = 1;
     private Uri ImageUri;
     private StorageReference PrescriptionsImagesRef;
@@ -112,7 +113,7 @@ public class ConfirmPrescri_order extends AppCompatActivity {
 
                     }else {
 
-                        int del = 380;
+                        int del = 350;
 
                         tvDelpres.setText("LKR" + Integer.toString(del));
 
@@ -137,6 +138,7 @@ public class ConfirmPrescri_order extends AppCompatActivity {
         btn_Change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Check();
                 DatabaseReference updRef = FirebaseDatabase.getInstance().getReference().child("Prescription Orders").
                         child(Prevalent.currentonlineUser.getPhone());
                 final String saveCurrentdate,saveCurrentTime;
@@ -221,7 +223,7 @@ public class ConfirmPrescri_order extends AppCompatActivity {
 
                 //set Message
                 builder.setMessage("Your final order has already been placed.Soon it will be verified.Thank You.");
-
+                Toast.makeText(getApplicationContext(), "You can pay your charges,once the order is received at your doorstep.", Toast.LENGTH_SHORT).show();
                 //set positive
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -239,6 +241,81 @@ public class ConfirmPrescri_order extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void Check()
+    {
+        Cname = name3.getText().toString();
+        PhoneNo = phone3.getText().toString();
+        Address= address3.getText().toString();
+        City=city3.getText().toString();
+
+
+        if (Cname.length()==0)
+        {
+            name3.requestFocus();
+            name3.setError("Name cannot be empty!");
+        }
+
+        else if(!Cname.matches("[a-zA-Z ]+")  )
+        {
+            isValidName(Cname);
+            /*Toast.makeText(this,"Please provide your full name.. ",Toast.LENGTH_SHORT);*/
+            name3.requestFocus();
+            name3.setError("Enter only alphabetical characters!");
+        }
+        else if (PhoneNo.length()==0)
+        {
+            phone3.requestFocus();
+            phone3.setError("Phone number cannot be empty!");
+        }
+  /*      else if(PhoneNo.length()<10 || PhoneNo.length()>10)
+        {
+            isValidPhoneNum(PhoneNo);
+            phone2.requestFocus();
+            phone2.setError("Enter valid Phone number!");
+        }*/
+        else if(!(PhoneNo.matches("[0-9]{10}")))
+        {
+            isValidPhoneNum(PhoneNo);
+            phone3.requestFocus();
+            phone3.setError("Invalid phone number!");
+
+
+        }
+        else if(Address.length()==0)
+        {
+            address3.requestFocus();
+            address3.setError("Address cannot be empty!");
+        }
+        else if(City.length()==0)
+        {
+            city3.requestFocus();
+            city3.setError("City cannot be empty!");
+        }
+
+
+
+    }
+
+    public boolean isValidName(String Cname) {
+        if (Cname.matches("[a-zA-Z ]+"))
+        {
+            return true;
+        }
+        else
+            return false;
+
+    }
+
+    public boolean isValidPhoneNum(String PhoneNo) {
+
+
+        if(PhoneNo.matches("[0-9]{10}")){
+            return true;
+        }
+        else
+            return false;
     }
 
 
