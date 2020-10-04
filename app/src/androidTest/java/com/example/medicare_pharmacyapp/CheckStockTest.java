@@ -4,7 +4,7 @@ import androidx.test.espresso.Espresso;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
-import androidx.test.rule.ActivityTestRule;
+//import androidx.test.rule.ActivityTestRule;
 
 import org.junit.After;
 import org.junit.Before;
