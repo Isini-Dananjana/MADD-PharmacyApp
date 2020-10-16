@@ -103,9 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
     public boolean isValidatePassword(String password) {
 
         if(password.length()<4){
-
-         //   Toast.makeText(this, "Please enter more than 4 character password", Toast.LENGTH_SHORT).show();
-            return false;
+             return false;
         }
         else {
             return true;
@@ -137,7 +135,6 @@ public class RegisterActivity extends AppCompatActivity {
                     userdataMap.put("phone", phone);
                     userdataMap.put("password", password);
 
-
                     RootRef.child("Users").child(phone).updateChildren(userdataMap)
                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -145,18 +142,23 @@ public class RegisterActivity extends AppCompatActivity {
 
                                     if(task.isSuccessful()){
 
-                                        Toast.makeText(RegisterActivity.this, "Your account has been created..", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this,
+                                                "Your account has been created..",
+                                                Toast.LENGTH_SHORT).show();
                                         loadingBar.dismiss();
 
-                                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                        Intent intent = new
+                                                Intent(RegisterActivity.this,
+                                                LoginActivity.class);
                                         startActivity(intent);
-
 
                                     }else{
 
                                         loadingBar.dismiss();
 
-                                        Toast.makeText(RegisterActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(RegisterActivity.this,
+                                                "Registration failed",
+                                                Toast.LENGTH_SHORT).show();
 
                                     }
 

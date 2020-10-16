@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MADD-PharmacyApp</string>
+    <string name="app_name">MediCare</string>
     <string name="Name">MediCare</string>
     <string name="i_m_an_admin">I\'m an Admin</string>
     <string name="i_m_not_an_admin">I\'m not an admin</string>

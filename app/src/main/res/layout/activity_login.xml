@@ -103,14 +103,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.487" />
 
+
     <LinearLayout
         android:id="@+id/linear_layout_1"
-        android:layout_width="341dp"
-        android:layout_height="wrap_content"
+        android:layout_width="308dp"
+        android:layout_height="36dp"
         android:layout_below="@+id/login_password_Input"
-        android:layout_marginTop="42dp"
+        android:layout_marginTop="12dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.582"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_password_Input">
 
@@ -127,7 +129,6 @@
 
             app:cbd_strokeColor="#0C0C0C" />
     </LinearLayout>
-
 
     <Button
         android:id="@+id/login_btn"

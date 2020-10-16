@@ -120,7 +120,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="49dp"
+        android:layout_marginBottom="39dp"
         android:background="@color/colorPrimaryDark"
         android:text="@string/lgOut"
         android:textAllCaps="false"

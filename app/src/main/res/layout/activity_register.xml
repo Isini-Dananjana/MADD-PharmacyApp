@@ -9,22 +9,22 @@
 
     <ImageView
         android:id="@+id/Register_appLogo"
-        android:layout_width="275dp"
-        android:layout_height="87dp"
+        android:layout_width="217dp"
+        android:layout_height="106dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="69dp"
+        android:layout_marginStart="59dp"
         android:layout_marginTop="29dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="67dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="596dp"
         android:src="@drawable/plus"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/register_user_name_Input"
@@ -108,8 +108,8 @@
         android:layout_marginEnd="20dp"
         android:background="@drawable/input_design"
         android:backgroundTint="#C1ABDBF3"
-        android:inputType="textPassword"
         android:hint="@string/password"
+        android:inputType="textPassword"
         android:padding="20dp"
         android:textColor="@android:color/black"
         android:textColorHint="#504D4D"

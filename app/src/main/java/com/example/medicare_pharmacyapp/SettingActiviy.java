@@ -180,23 +180,19 @@ public class SettingActiviy extends AppCompatActivity {
         progressDialog.show();
 
         if(imageUri != null){
+            //reference to db to connect
+            final  StorageReference fileRef = storageReference
+                    .child(Prevalent.currentonlineUser.getPhone() + ".jpg");//refer to the db
 
-            final  StorageReference fileRef = storageReference.child(Prevalent.currentonlineUser.getPhone() + ".jpg");
-
-            uploadTask = fileRef.putFile(imageUri);
+            uploadTask = fileRef.putFile(imageUri);//put it in the
 
             uploadTask.continueWithTask(new Continuation() {
                 @Override
                 public Object then(@NonNull Task task) throws Exception {
 
                     if (!task.isSuccessful()){
-
                         throw task.getException();
-
                     }
-
-
-
                     return fileRef.getDownloadUrl();
                 }
             }).addOnCompleteListener(new OnCompleteListener<Uri>() {
@@ -209,7 +205,8 @@ public class SettingActiviy extends AppCompatActivity {
 
                         myUrl = downloadUrl.toString();
 
-                        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Users");
+                        DatabaseReference ref =
+                                FirebaseDatabase.getInstance().getReference().child("Users");
 
                         HashMap<String, Object> userMap = new HashMap<>();
                         userMap.put("name", fullNameEditText.getText().toString());
@@ -219,18 +216,19 @@ public class SettingActiviy extends AppCompatActivity {
 
                         ref.child(Prevalent.currentonlineUser.getPhone()).updateChildren(userMap);
 
-
-
                         progressDialog.dismiss();
 
 
-                        startActivity(new Intent(SettingActiviy.this, HomeActivity.class));
-                        Toast.makeText(SettingActiviy.this, "Profile updated successfully..", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(SettingActiviy.this,
+                                HomeActivity.class));
+                        Toast.makeText(SettingActiviy.this,
+                                "Profile updated successfully..", Toast.LENGTH_SHORT).show();
                         finish();
                     }else {
 
                         progressDialog.dismiss();
-                        Toast.makeText(SettingActiviy.this, "Error occured", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SettingActiviy.this, "Error occured",
+                                Toast.LENGTH_SHORT).show();
 
 
                     }

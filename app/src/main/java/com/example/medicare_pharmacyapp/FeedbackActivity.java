@@ -123,7 +123,7 @@ protected void onCreate(Bundle savedInstanceState) {
                 feedback.setFeedback(UserReview);
                 feedback.setSmileRating(smile);
 
-                Ref.child(phone).setValue(feedback);
+                Ref.child(phone).setValue(feedback);//under feedback table insert the feedback details
                 Toast.makeText(FeedbackActivity.this, "Submitted your feedback successfully", Toast.LENGTH_SHORT).show();
             }
         }
@@ -201,7 +201,8 @@ protected void onCreate(Bundle savedInstanceState) {
                 feedback.setSmileRating(smile);
 
                 Ref.child(phone).setValue(feedback);
-                Toast.makeText(FeedbackActivity.this, "Submitted your feedback successfully", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FeedbackActivity.this,
+                        "Submitted your feedback successfully", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(FeedbackActivity.this,HomeActivity.class);
                 startActivity(intent);
     }
